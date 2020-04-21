@@ -19,7 +19,7 @@ author:
   image: 'authorimage.jpg'
   greetings: 'Hi there!'
   description: "My name is Kris Bolton. I'm a Cyber Security research student (MSc) and Machine Learning enthusiast from the United Kingdom. It’s nice to meet you."
-  bio: 'Kris is a Cyber Security masters student with a background in Computer Science (Software Engineering), his research focus is Critical National Infrastructure Defense and National Cyber Defense. He is currently writing a book "Practical Deep Learning Fundamentals.", designed to help fellow programmers self-learn Machine Learning.'
+  bio: 'Kris is a Cyber Security masters student with a background in Computer Science (Software Engineering), his research focus is Critical National Infrastructure Defense and Advanced Persistent Threats.'
 
 # Contact form setings
 email: krisbolton@gmail.com

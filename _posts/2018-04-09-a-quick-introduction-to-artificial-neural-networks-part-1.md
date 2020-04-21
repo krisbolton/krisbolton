@@ -25,7 +25,3 @@ The frequency of the firing of an artificial neuron is determined by an activati
 The graph above shows the Sigmoid activation function, which will convert all input signals into positive values between 0 and 1. The use of other activation functions with wider values, or negative values change the frequency of the firing of a neuron and will suit different types of data and purposes.
 
 Activation functions are dicussed in further detail in the final quick introduction post, [part two](/a-quick-introduction-to-artificial-neural-networks-part-2).
-
-----
-
-This blog post was created using the content from Chapter 4 of my book, [Practical Deep Learning Fundamentals](practical-deep-learning-fundamentals/). The chapter describes artificial neural networks in an easy to understand manner, with minimum math and full explanation of the math that is required. Practical exercises lead the reader through the implementation of a single layer neural network in the Python machine learning library Scikit-learn.

@@ -23,8 +23,7 @@ author:
 
 # Contact form setings
 email: krisbolton@gmail.com
-contact_page_description: "Please use the contact form below if you wish to contact me. If you require help regarding my book, Practical Deep Learning Fundamentals, please first seek assistance from Quora, Stack Exchange, r/programming, r/machinelearning or similar - I can't help everyone no matter how much I'd like to."
-thankyou_page_description: "Thank you for reaching out. Your message has been successfully sent."
+contact_page_description:
 
 # Social links
 twitter: 'krisbolton'

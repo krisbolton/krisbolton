@@ -23,9 +23,3 @@ One of my lecturers at university, Dr. Kevan Buckley,  was involved in a project
 
 ### Is Sentiment Analysis Right for Your Project?
 That is down to you. I’m an advocate of using computational methods to analyse opinion due to the advantages described above, I hope this short article has achieved its objective and made you consider measuring opinion computationally.
-
-----
-
-Sentiment analysis and opinion mining is discussed in more detail in my book, Practical Deep Learning Fundamentals. Sentiment analysis also forms one of the major projects featured in the book, where the reader is guided through the implementation of a neural network for sentiment analysis in Google’s TensorFlow.
-
-Sign up below to read the first four chapters as they become available and be the first to know when the book launches.

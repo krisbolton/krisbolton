@@ -1,11 +1,10 @@
 ---
 layout: post
 title: "Why You Should Get into Machine Learning"
-tags: [ Practical Deep Learning Fundamentals ]
+tags: [ Machine Learning ]
 featured_image_thumbnail: assets/images/posts/2018/thomas-kvistholt-191153-unsplash.jpg
 featured_image: assets/images/posts/2018/thomas-kvistholt-191153-unsplash.jpg
 ---
-This post is formed of the entire of Chapter Two from Practical Deep Learning Fundamentals, one of the four chapters which are freely available. This chapter is intended to inspire the reader to take an interest in machine learning. You can read chapter one and two in draft PDF form by subscribing to email updates. Chapter three and a technical chapter, likely chapter 5 will also be available via email updates over the next two weeks.
 
 > Four of the top ten and the two highest growth jobs are machine learning related according to LinkedIn.
 

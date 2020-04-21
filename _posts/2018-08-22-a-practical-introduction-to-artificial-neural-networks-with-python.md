@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Practical Introduction to Artificial Neural Networks with Python"
-tags: [ Practical Deep Learning Fundamentals ]
+tags: [ Machine Learning ]
 featured_image_thumbnail: assets/images/posts/2018/biasneuronexample.jpg
 featured_image: assets/images/posts/2018/clement-h-544786-unsplash.jpg
 featured: true
@@ -287,4 +287,4 @@ Regularized by adding a penalty to the loss function that reduces the model para
 
 Linear model, referring to a type of classifier model which defines categories based on the linear combination of a features characteristics. That is a mathematical expression created by multiplying a set of characteristics by a constant and summing the result. `X1 w1 + b`
 
-Stochastic Gradient Descent (SGD) is a type of backpropagation learning algorithm that calculates gradients based on the values of a batch with the aim of reducing the gradient (imagine a graph with a steadily decreasing learning rate gradient), hence gradient descent. The algorithm splits the data into batches and the gradients are summed and weights updated, similar to backpropagation. Backpropagation, SGD and learning rates are discussed in further chapters within [Practical Deep Learning Fundamentals](/practical-deep-learning-fundamentals).
+Stochastic Gradient Descent (SGD) is a type of backpropagation learning algorithm that calculates gradients based on the values of a batch with the aim of reducing the gradient (imagine a graph with a steadily decreasing learning rate gradient), hence gradient descent. The algorithm splits the data into batches and the gradients are summed and weights updated, similar to backpropagation. 

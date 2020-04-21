@@ -42,7 +42,3 @@ The Softmax activation function compresses values to positive values between 0.0
  
 Summary
 It can be difficult to grasp the usefulness of the different activation functions, at first glance they all look the very similar. Further, how do you decide between them? Luckily, there are best practices and established use-cases. For example, the Softmax activation function is usually found in the output layer of a classification network, the Softmax neuron with the highest value dictates the predicted class of the input value – remember that the neurons have been trained and thus it can be said that the neurons belong to certain classes as decided by the training.
-
-----
-
-Activation Functions are discussed in more detail in Practical Deep Learning Fundamentals.

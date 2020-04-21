@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Quick Introduction to Artificial Neural Networks (Part 2)"
-tags: [ Practical Deep Learning Fundamentals ]
+tags: [ Machine Learning, Neural Networks ]
 featured_image_thumbnail: assets/images/posts/2018/sigmoid-activation-function.jpg
 ---
 ### Activation Functions

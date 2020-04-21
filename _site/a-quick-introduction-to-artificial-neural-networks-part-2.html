@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>A Quick Introduction to Artificial Neural Networks (Part 2) | Kris Bolton</title>
+<meta name="generator" content="Jekyll v3.4.0" />
+<meta property="og:title" content="A Quick Introduction to Artificial Neural Networks (Part 2)" />
+<meta name="author" content="Kris Bolton" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Activation Functions In part one of this Quick Introduction to Artificial Neural Networks we examined a diagram of a neural network. This part will discuss activation functions. Activation functions set a threshold which determines the frequency at which artificial neurons fire (their output). In biological neurons the precise timing of the neuron firing conveys information, in artificial neurons only the frequency is important." />
+<meta property="og:description" content="Activation Functions In part one of this Quick Introduction to Artificial Neural Networks we examined a diagram of a neural network. This part will discuss activation functions. Activation functions set a threshold which determines the frequency at which artificial neurons fire (their output). In biological neurons the precise timing of the neuron firing conveys information, in artificial neurons only the frequency is important." />
+<link rel="canonical" href="http://localhost:4000/a-quick-introduction-to-artificial-neural-networks-part-2" />
+<meta property="og:url" content="http://localhost:4000/a-quick-introduction-to-artificial-neural-networks-part-2" />
+<meta property="og:site_name" content="Kris Bolton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-05T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Kris Bolton" />
+<script type="application/ld+json">
+{"headline":"A Quick Introduction to Artificial Neural Networks (Part 2)","dateModified":"2018-06-05T00:00:00+01:00","url":"http://localhost:4000/a-quick-introduction-to-artificial-neural-networks-part-2","datePublished":"2018-06-05T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/a-quick-introduction-to-artificial-neural-networks-part-2"},"author":{"@type":"Person","name":"Kris Bolton"},"description":"Activation Functions In part one of this Quick Introduction to Artificial Neural Networks we examined a diagram of a neural network. This part will discuss activation functions. Activation functions set a threshold which determines the frequency at which artificial neurons fire (their output). In biological neurons the precise timing of the neuron firing conveys information, in artificial neurons only the frequency is important.","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Kris Bolton"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/logo.png" alt="Kris Bolton" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/">Home</a></li>
+            
+                <li class="menu-item"><a href="/about.html">About</a></li>
+            
+                <li class="menu-item"><a href="/contact.html">Contact</a></li>
+            
+            </ul>
+            <button id="sidebar-show" class="sidebar-toggle"><span class="screen-reader-text">Open Sidebar</span><span class="icon-more" aria-hidden="true"></span></button>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2018-06-05">June 5,
+                        2018</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">A Quick Introduction to Artificial Neural Networks (Part 2)</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-content">
+                <h3 id="activation-functions">Activation Functions</h3>
+<p>In <a href="/a-quick-introduction-to-artificial-neural-networks-part-1">part one</a> of this Quick Introduction to Artificial Neural Networks we examined a diagram of a neural network. This part will discuss activation functions. Activation functions set a threshold which determines the frequency at which artificial neurons fire (their output). In biological neurons the precise timing of the neuron firing conveys information, in artificial neurons only the frequency is important.</p>
+
+<h3 id="linear-activation-function">Linear Activation Function</h3>
+<p>The linear activation function simply returns the neuron input value as its output value, without manipulating it at all. This type of activation function is often used where regression is to be applied, and the network is to learn to output numeric values. For example, modelling linear regression, a statistical technique for determining the relationship between values.</p>
+
+<p><img src="assets/images/posts/2018/linear-activation-function.jpg" alt="" /></p>
+
+<h3 id="step-activation-function">Step Activation Function</h3>
+<p>The step activation function only output two values based on input, 0 or 1. If the input value is below 0.5 the returned value is 0, if the input value is 0.5 or above the returned value is 1. This allows the mapping of boolean values, true and false.</p>
+
+<p><img src="assets/images/posts/2018/step-activation-function.jpg" alt="" /></p>
+
+<h3 id="sigmoid-activation-function">Sigmoid Activation Function</h3>
+<p>The Sigmoid activation function compresses input values to values between 0 and 1.0.</p>
+
+<p><img src="assets/images/posts/2018/sigmoid-activation-function.jpg" alt="" /></p>
+
+<h3 id="hyperbolic-tangent-activation-function">Hyperbolic Tangent Activation Function</h3>
+<p>The Hyperbolic Tangent activation function, also called the tanh activation function conforms input signals to values between -1.0 and 1.0. It is similar to the Sigmoid activation function, with the additional value range of 0 to -1.0.</p>
+
+<p>This additional range proves useful when the input values to the network are negative. In such circumstances the Sigmoid function reduces such negative values to near 0, which results in the networks parameters being updated less regularly and negatively affecting training. The Tanh function does not suffer this same flaw, as negative values are not forced into a positive range.</p>
+
+<p><img src="assets/images/posts/2018/hyperbolic-tangent-activation-function.jpg" alt="" /></p>
+
+<h3 id="rectified-linear-units-relu">Rectified Linear Units (ReLU)</h3>
+<p>The Rectified Linear Units (ReLU) activation function does not compress values to a small range like the Sigmoid or Tanh activation functions, which compress input values to 0 to 1, or -1 to 1.0 respectively. The increased range offered by ReLU results in far superior performance in training compared to both Sigmoid and Tanh.</p>
+
+<p><img src="assets/images/posts/2018/ReLU-activation-function.jpg" alt="" /></p>
+
+<h3 id="softmax-activation-function">Softmax Activation Function</h3>
+<p>The Softmax activation function compresses values to positive values between 0.0 and 1.0. Typically placed in output layers of networks used for classification, the Softmax neurons allow the prediction of outputs to certain classes.</p>
+
+<p><img src="assets/images/posts/2018/softmax-activation-function.jpg" alt="" /></p>
+
+<p>Summary
+It can be difficult to grasp the usefulness of the different activation functions, at first glance they all look the very similar. Further, how do you decide between them? Luckily, there are best practices and established use-cases. For example, the Softmax activation function is usually found in the output layer of a classification network, the Softmax neuron with the highest value dictates the predicted class of the input value – remember that the neurons have been trained and thus it can be said that the neurons belong to certain classes as decided by the training.</p>
+
+<hr />
+
+<p>Activation Functions are discussed in more detail in Practical Deep Learning Fundamentals.</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/practical- deep- learning- fundamentals/'>Practical Deep Learning Fundamentals</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=A+Quick+Introduction+to+Artificial+Neural+Networks+%28Part+2%29&amp;url=a-quick-introduction-to-artificial-neural-networks-part-2">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=a-quick-introduction-to-artificial-neural-networks-part-2">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/authorimage.jpg" alt="Kris Bolton's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Kris Bolton</h2>
+                    <p class="author-description">Kris is a Cyber Security masters student with a background in Computer Science (Software Engineering), his research focus is Critical National Infrastructure Defense and National Cyber Defense. He is currently writing a book "Practical Deep Learning Fundamentals.", designed to help fellow programmers self-learn Machine Learning.</p>
+                </div>
+            </div>
+            
+
+        </article>
+
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="June 1, 2018">June 1, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/the-difficulty-writing-a-book">The Difficulty Writing a Book</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/writing/'>Writing</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/the-difficulty-writing-a-book" class="post-thumbnail">
+                    <img src="assets/images/posts/2018/neonbrand-618322-unsplash.jpg" alt="The Difficulty Writing a Book" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="July 1, 2018">July 1, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/my-search-for-subscribers">My Search for Subscribers: The First Attempt</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/digital-marketing/'>Digital marketing</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/my-search-for-subscribers" class="post-thumbnail">
+                    <img src="assets/images/posts/2018/reddit_firstpost_ga_overview.jpg" alt="My Search for Subscribers: The First Attempt" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    <a href="https://twitter.com/krisbolton" target="_blank">
+        <span class="fa-twitter fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Twitter</span>
+    </a>
+    
+    
+    
+    <a href="https://github.com/krisbolton" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@krisbolton" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/krisbolton" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Kris Bolton</a> &copy; 2020 . Horace theme by
+                    <a target="_blank" href="https://justgoodthemes.com/">JustGoodThemes</a>. <br />
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a> and <a target="_blank" href="https://pages.github.com/">GitHub Pages</a>. <br />
+                    <a target="_blank" href="/privacy-policy.html">Privacy Policy</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    <aside id="sidebar" class="sidebar">
+	<div class="sidebar-scrollable">
+		<div class="sidebar-inside">
+			<button id="sidebar-hide" class="sidebar-toggle"><span class="screen-reader-text">Close Sidebar</span><span
+				    aria-hidden="true" class="icon-close"></span></button>
+			<nav id="sidebar-navigation" class="widget site-navigation">
+				<h2 class="widget-title">Explore Site</h2>
+				<ul class="menu">
+					
+						<li class="menu-item"><a href="/">Home</a></li>
+					
+						<li class="menu-item"><a href="/about.html">About</a></li>
+					
+						<li class="menu-item"><a href="/contact.html">Contact</a></li>
+					
+				</ul>
+			</nav>
+			
+<section class="widget widget-text">
+    <h2 class="widget-title">About Kris Bolton</h2>
+    <p>The personal website of Kris Bolton, Cyber Security Research Student.</p>
+</section>
+
+
+<section class="widget widget-recent-posts">
+    <h2 class="widget-title">Recent Articles</h2>
+    <ul>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">March 10, 2019</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/uk-cyber-security-spending">UK Cyber Security Spending First Results: National Ambulance Services</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/uk-cyber-security-spending">
+                <img src="http://localhost:4000/assets/images/posts/2018/laptop-cash.jpg"
+                    alt="UK Cyber Security Spending First Results: National Ambulance Services">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">August 22, 2018</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/a-practical-introduction-to-artificial-neural-networks-with-python">A Practical Introduction to Artificial Neural Networks with Python</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/a-practical-introduction-to-artificial-neural-networks-with-python">
+                <img src="http://localhost:4000/assets/images/posts/2018/biasneuronexample.jpg"
+                    alt="A Practical Introduction to Artificial Neural Networks with Python">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">July 26, 2018</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/why-you-should-get-into-machine-learning">Why You Should Get into Machine Learning</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/why-you-should-get-into-machine-learning">
+                <img src="http://localhost:4000/assets/images/posts/2018/thomas-kvistholt-191153-unsplash.jpg"
+                    alt="Why You Should Get into Machine Learning">
+            </a>
+            
+        </li>
+        
+    </ul>
+</section>
+
+<!-- Create a sorted array of tags -->
+ 
+<section class="widget widget-tagcloud">
+    <h2 class="widget-title">Tags</h2>
+    <div class="tagcloud">
+        
+        <a href='tag/books/'>Books</a>
+        
+        <a href='tag/digital- marketing/'>Digital Marketing</a>
+        
+        <a href='tag/machine- learning/'>Machine Learning</a>
+        
+        <a href='tag/practical- deep- learning- fundamentals/'>Practical Deep Learning Fundamentals</a>
+        
+        <a href='tag/projects/'>Projects</a>
+        
+        <a href='tag/reviews/'>Reviews</a>
+        
+        <a href='tag/sentiment- analysis/'>Sentiment Analysis</a>
+        
+        <a href='tag/writing/'>Writing</a>
+        
+    </div>
+</section>
+
+
+<section class="widget widget-newsletter">
+    <div class="inner">
+        <h2 class="widget-title">Subscribe to Kris Bolton</h2>
+        <p>Get the latest and greatest from Kris Bolton delivered straight to your inbox every week.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="https://krisbolton.us12.list-manage.com/subscribe/post?u=f493e5bbda4cf62b8809b4b61&amp;id=798a6931cc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL"
+                    placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+    </div>
+</section>
+
+		</div><!-- .sidebar-inside -->
+	</div><!-- .sidebar-scrollable -->
+</aside><!-- .sidebar -->
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-781038-17"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-781038-17', { 'anonymize_ip': true });
+  </script>
+
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

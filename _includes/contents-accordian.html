@@ -1,0 +1,153 @@
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script> 
+
+<script type="text/javascript">
+$(function() {
+
+    // Set up variables
+    var $el, $parentWrap, $otherWrap, 
+        $allTitles = $("dt").css({
+            padding: 5, // setting the padding here prevents a weird situation, where it would start animating at 0 padding instead of 5
+            "cursor": "pointer" // make it seem clickable
+        }),
+        $allCells = $("dd").css({
+            position: "relative",
+            top: -1,
+            left: 0,
+            display: "none" // info cells are just kicked off the page with CSS (for accessibility)
+        });
+    
+    // clicking image of inactive column just opens column, doesn't go to link   
+    $("#page-wrap").delegate("a.image","click", function(e) { 
+        
+        if ( !$(this).parent().hasClass("curCol") ) {         
+            e.preventDefault(); 
+            $(this).next().find('dt:first').click(); 
+        } 
+        
+    });
+    
+    // clicking on titles does stuff
+    $("#page-wrap").delegate("dt", "click", function() {
+        
+        // cache this, as always, is good form
+        $el = $(this);
+        
+        // if this is already the active cell, don't do anything
+        if (!$el.hasClass("current")) {
+        
+            $parentWrap = $el.parent().parent();
+            $otherWraps = $(".info-col").not($parentWrap);
+            
+            // remove current cell from selection of all cells
+            $allTitles = $("dt").not(this);
+            
+            // close all info cells
+            $allCells.slideUp();
+            
+            // return all titles (except current one) to normal size
+            $allTitles.animate({
+                fontSize: "14px",
+                paddingTop: 5,
+                paddingRight: 5,
+                paddingBottom: 5,
+                paddingLeft: 5
+            });
+            
+            // animate current title to larger size            
+            $el.animate({
+                "font-size": "16px",
+                paddingTop: 10,
+                paddingRight: 5,
+                paddingBottom: 0,
+                paddingLeft: 10
+            }).next().slideDown();
+            
+            // make the current column the large size
+            $parentWrap.animate({
+                width: 320
+            }).addClass("curCol");
+            
+            // make other columns the small size
+            $otherWraps.animate({
+                width: 320
+            }).removeClass("curCol");
+            
+            // make sure the correct column is current
+            $allTitles.removeClass("current");
+            $el.addClass("current");  
+        
+        }
+        
+    });
+    
+    $("#starter").trigger("click");
+    
+});
+</script>
+
+<style>
+
+#page-wrap { width: 100%; padding: 0 0 0 15px; margin: 0 auto; overflow: hidden; height: 100%; }
+
+.info-col { float: left; width: 45%; height: 100%; padding: 0 0 20px 0;}
+.info-col h2 { text-align: center; font-weight: normal; }
+
+dt { padding: 5px; background: white; color: black; border-bottom: 1px solid black; border-right: 1px solid white; }
+dd { position: absolute; left: -9999px; top: -9999px; width: 299px; background: white; padding: 10px; color: black; border-right: 1px solid white; }
+
+</style>
+
+
+<div id="page-wrap">
+		
+    <div class="info-col">
+    		
+    		<dl>
+    		  <dt>Chapter One: Why You Should get into Machine Learning</dt>
+    		  <dd>A discussion of the mergers, aquisitions, commercial demand, breakthroughts and more that make machine learning a valuable and intereting area to add to your resume.</dd>
+    		  <dt>Chapter Two: An Introduction to Machine Learning</dt>
+    		  <dd>An introduction to the broad area of machine learning. It's helpful to understand where we've come from to see where we're heading.</dd>
+    		  <dt>Chapter Three: An Overview of Open Source Machine Learning Libraries</dt>
+    		  <dd>An overview introduction to the most popular machine learning libraries, giving the reader a broad understanding of the open source landscape for their own projects.</dd>
+    		  <dt>Chapter Four: A Breif Tour of Non-Deep Methods in Machine Learning</dt>
+    		  <dd>A short chapter on a number of popular methods in machine learning which are not deep neural networks. One aim of the book is to leave readers with a greater broad understanding of the area so they can move beyond what is within the book themselves.</dd>
+    		  <dt>Chapter Six: An Introduction to Artificial Neural Networks</dt>
+    		  <dd>Artificial Neural Networks (ANNs) and the concepts surrounding them are introduced and illustrated. The reader is presented with a practical tas to implement a single neuron program and analyse a single data set.</dd>
+              <dt>Chapter Seven: How to Train Artificial Neural Networks</dt>
+    		  <dd>How neural networks learn and the various pit-falls of techniques are discussed. As the reader continues through the book techniques which have been used are explained further and are used within practical examples.</dd>
+              <dt>Chapter Eight: Gathering Data and Creating Datasets</dt>
+    		  <dd>Methods for gathering data and creating datasets, consdiering how the data is to be used and how the neural network will use this data is discussed within chapter eight.</dd>
+              <dt>Chapter Nine: An Introduction to TensorFlow</dt>
+    		  <dd>TensorFlow is Google's machine learning libary. It is by far the most popular machine learning library in the world. Additionally, preceeding capters use TensorFlow for practical examples, the introduction allows the reader to complete future exercises.</dd>
+              <dt>Chapter Ten: An Introduction to Deep Learning</dt>
+        	  <dd>A breif introduction to deep learning is provided and the areas which deep learning provides significat advantages is described. </dd>
+    		</dl>
+		
+		</div>
+		
+        <div class="info-col">
+        	
+        	<dl>
+        	  <dt>Chapter Eleven: Foundational Algorithms in Deep Learning</dt>
+        	  <dd>The foundational algorithms of deep learning are discussed. Perceptron, Markov Chain, Hopfield Networks and Boltzmann Machines are described.</dd>
+        	  <dt>Chapter Tweleve: Algorithms in Deep Learning</dt>
+        	  <dd>Foundational algorithms are the historic algorithms on which most modern algorithms are built or inspired from, algorithms discussed within this chapter are modren state-of-the-art.</dd>
+        	  <dt>Chapter Thirteen: How to Evaluate and Tune Neural Networks</dt>
+        	  <dd>Evaluating neural network performance and outcomes, and tuning the network to improve aspects are learned skills. This chapter aims to teach the reader how to perform these actions to get desired outcomes and ensure performance.</dd>
+        	  <dt>Chapter Fourteen: Project: Sentiment Analysis</dt>
+        	  <dd>Sentiment Analysis, deriving feeling from text is an important technique which as wide applicaiton; from intelligence gathering to marketing. This chapter aims to provide an introduction to the area and techniques via a practical project.</dd>
+        	  <dt>Chapter Fifteen: Project: Object Recognition</dt>
+        	  <dd>Object recognition is a growing and important area within robotics, sensors and has implementations likely not thought of yet. The reader is introduced to the area and guided through examples to learn the techniques for themselves.</dd>
+              <dt>Chapter Sixteen: Project: Reinforcement Learning</dt>
+        	  <dd>Reinforcement learning, the process of a machine learning from its own mistakes is a powerful technique which allows machines to learn on their own, creating outcomes far surpassing what humans can achieve. The reader is guided through techniques in a practical format.</dd>
+              <dt>Chapter Seventeen: Understanding Neural Network Math</dt>
+        	  <dd>A small amount of math is used throughout this book, however, some readers may want to go beyond the book and reader research and continue to learn by themselves. This chapter attempts to provide a foundation of the math of neural networks to allow readers without a math background do just that.</dd>
+              <dt>Chapter Eighteen: Bringing Everything Together</dt>
+              <dd>This chapter brings together what you have learned throughout the book and lays out the steps we have taken in the various projects to allow you to apply what you have learned to your own projects. Somewhat of a checklist when creating your own projects.</dd>
+              <dt>Chapter Nineteen: Additional Resources</dt>
+        	  <dd>A number of additional resources area provided, including: further reading, courses to tak and a list of open source data sets to use your newly developed skills.</dd>
+        	</dl>
+        
+        </div>
+			
+	</div>

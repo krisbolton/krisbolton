@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>A Practical Introduction to Artificial Neural Networks with Python | Kris Bolton</title>
+<meta name="generator" content="Jekyll v3.4.0" />
+<meta property="og:title" content="A Practical Introduction to Artificial Neural Networks with Python" />
+<meta name="author" content="Kris Bolton" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An Introduction to Artificial Neural Networks Artificial neurons mimic the basic function of biological neurons, and much like their biological counterparts they only become useful when connected in a larger network, called Artificial Neural Networks. Neural networks may mimic the basic building block of the human brain, however, when connected to a larger network artificial neurons do not inherit their biological counterparts ability of what is termed “general intelligence”. Even the largest collection of artificial neurons are not intelligent. Artificial Neural Networks are only capable of performing specific tasks." />
+<meta property="og:description" content="An Introduction to Artificial Neural Networks Artificial neurons mimic the basic function of biological neurons, and much like their biological counterparts they only become useful when connected in a larger network, called Artificial Neural Networks. Neural networks may mimic the basic building block of the human brain, however, when connected to a larger network artificial neurons do not inherit their biological counterparts ability of what is termed “general intelligence”. Even the largest collection of artificial neurons are not intelligent. Artificial Neural Networks are only capable of performing specific tasks." />
+<link rel="canonical" href="http://localhost:4000/a-practical-introduction-to-artificial-neural-networks-with-python" />
+<meta property="og:url" content="http://localhost:4000/a-practical-introduction-to-artificial-neural-networks-with-python" />
+<meta property="og:site_name" content="Kris Bolton" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-22T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Kris Bolton" />
+<script type="application/ld+json">
+{"headline":"A Practical Introduction to Artificial Neural Networks with Python","dateModified":"2018-08-22T00:00:00+01:00","url":"http://localhost:4000/a-practical-introduction-to-artificial-neural-networks-with-python","datePublished":"2018-08-22T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/a-practical-introduction-to-artificial-neural-networks-with-python"},"author":{"@type":"Person","name":"Kris Bolton"},"description":"An Introduction to Artificial Neural Networks Artificial neurons mimic the basic function of biological neurons, and much like their biological counterparts they only become useful when connected in a larger network, called Artificial Neural Networks. Neural networks may mimic the basic building block of the human brain, however, when connected to a larger network artificial neurons do not inherit their biological counterparts ability of what is termed “general intelligence”. Even the largest collection of artificial neurons are not intelligent. Artificial Neural Networks are only capable of performing specific tasks.","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Kris Bolton"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/logo.png" alt="Kris Bolton" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/">Home</a></li>
+            
+                <li class="menu-item"><a href="/about.html">About</a></li>
+            
+                <li class="menu-item"><a href="/contact.html">Contact</a></li>
+            
+            </ul>
+            <button id="sidebar-show" class="sidebar-toggle"><span class="screen-reader-text">Open Sidebar</span><span class="icon-more" aria-hidden="true"></span></button>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2018-08-22">August 22,
+                        2018</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">A Practical Introduction to Artificial Neural Networks with Python</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/2018/clement-h-544786-unsplash.jpg"
+                    alt="A Practical Introduction to Artificial Neural Networks with Python"></div>
+            
+            <div class="post-content">
+                <h3 id="an-introduction-to-artificial-neural-networks">An Introduction to Artificial Neural Networks</h3>
+<p>Artificial neurons mimic the basic function of biological neurons, and much like their biological counterparts they only become useful when connected in a larger network, called Artificial Neural Networks. Neural networks may mimic the basic building block of the human brain, however, when connected to a larger network artificial neurons do not inherit their biological counterparts ability of what is termed “general intelligence”. Even the largest collection of artificial neurons are not intelligent. Artificial Neural Networks are only capable of performing specific tasks.</p>
+
+<!--more-->
+
+<blockquote>
+  <p>neural networks can achieve above 80% accuracy in certain tasks</p>
+</blockquote>
+
+<p>Neural networks are extremely adept at recognising patterns, this is pattern recognition is the reason they have become so widely used and talked about in recent years. The ability of neural networks to discover and recognise patterns allows them to far surpass traditional methods in computer science, making them viable for use in research and business.</p>
+
+<p>This pattern recognition ability can be used to solve a wide variety of problems. One of the projects in the latter half of this book uses sentiment analysis, a natural language processing categorisation problem. Is a string of text positive, neutral or negative? This question may seem simple at first, however, the algorithm will have to traverse the nuances in human speech; sarcasm and other complex linguistic nuances can blur the question for machines. Despite this, neural networks can achieve greater than 70% accuracy, and the most advanced neural networks can achieve above 80% in sentiment analysis and opinion mining tasks. This is more than enough to provide advantages over using humans to categorise sentiment.</p>
+
+<h3 id="an-artificial-neuron">An Artificial Neuron</h3>
+<p>The image below shows an illustration of a single biological neuron annotated to describe a single artificial neurons function.</p>
+
+<p><img src="assets/images/posts/2018/neuron-annotated.jpg" alt="" /></p>
+
+<p>A biological neuron receives input signals from its dendrites from other neurons and sends output signals along its axon, which branches out and connects to other neurons. In the illustration above, the input signal is represented by x0, as this signal ‘travels’ it is multiplied (<code class="highlighter-rouge">w0 x0</code>) based on the weight variable (<code class="highlighter-rouge">w0</code>). The weight variables are learnable and the weights strength and polarity (positive or negative) control the influence of the signal. The influence is determined by summing the signal input and weight (<code class="highlighter-rouge">∑i wi xi + b</code>) which is then calculated by the activation function f, if it is above a certain threshold the neuron fires. Below is a simplified diagram.</p>
+
+<h3 id="sigma">Sigma</h3>
+<p>The Greek letter sigma <code class="highlighter-rouge">∑</code> is used to represent summation, this can be thought of as analogous to a  for loop in programming.</p>
+
+<p><img src="assets/images/posts/2018/summation.jpg" alt="" /></p>
+
+<h3 id="types-of-artificial-neuron">Types of Artificial Neuron</h3>
+<p>We’ve hinted at the existence of different types of neurons which serve different purposes. In this section we will discuss the different types of neuron which will make up a neural network. Networks don’t have to have every type of neuron, and some neurons can have multiple purposes.</p>
+
+<p>Neuron naming conventions differ between sources, industries, and people of different backgrounds. Neurons might also be known as units or nodes. They’re simply different names for the same thing.</p>
+
+<h4 id="input-and-output-neurons">Input and Output Neurons</h4>
+<p>Input and output neurons can be thought of as placeholders which represent information passed into the network and information processed out from the network in the form of vectors or arrays. These vectors typically contain floating point numbers. The number of elements within the vector is equal to the number of input neurons.</p>
+
+<p><img src="assets/images/posts/2018/typesofneuron1.jpg" alt="" /></p>
+
+<h4 id="hidden-neurons">Hidden Neurons</h4>
+<p>Hidden neurons sit in the middle of a network, surrounded by other neurons – they receive input from input neurons or other hidden neurons, and they output to output neurons or hidden neurons. They are never connected to the data or produce output themselves. This is their defining characteristic.</p>
+
+<p><img src="assets/images/posts/2018/typesofneuron2.jpg" alt="" /></p>
+
+<h4 id="bias-neurons">Bias Neurons</h4>
+<p>The addition of bias into a network helps the network learn by allowing the programmer to shift the activation function curve to the left or right, the fine tuning of this parameter can affect the success of learning. Below is an example of a network including bias neurons.</p>
+
+<p>The diagram shows a neural network designed to compute XOR arguments. Each layer, excluding the input layer, has a bias neuron attached. Later on in this chapter we will build and calculate the output of this network, and build an example in scikit-learn.</p>
+
+<p><img src="assets/images/posts/2018/biasneuronexample.jpg" alt="" /></p>
+
+<p>An example of how a programmer can shift the activation function laterally:</p>
+
+<p><img src="assets/images/posts/2018/lateralshiftbias.jpg" alt="" /></p>
+
+<h4 id="context-neurons">Context Neurons</h4>
+<p>Context neurons exist in some specific types of neural networks and are not present in all network types. For example, Recurrent neural networks use context neurons as a form of memory to hold on to information from past calculations. They attempt to mimic context created by biological phenomena within human brains. An analogy helps make their purpose clearer; if you’re crossing the street and you hear a car horn you will likely stop and look towards the noise, looking for danger. However, if you were at a sports event and hear a horn from an over enthusiastic supporter you ignore it. You’ve learned loud noises are important when crossing the street, but are meaningless within other contexts.</p>
+
+<p>Below is an example of a recurrent neural network architecture:</p>
+
+<p><img src="assets/images/posts/2018/contextneuronrrn.jpg" alt="" /></p>
+
+<p>The network resembles a typical network, with input I1, two hidden neurons and output O1. Additionally, information is duplicated and sent to C1 and C2 which provide data from previous calculations.</p>
+
+<h4 id="weight">Weight</h4>
+<p>Weight variables allow the network or programmer to adjust the program to closer match the desired output. Weights are programmatically manipulated by the network during training iterations to bring the error rate down as the network learns. As seen in the section discussing bias, bias allows the manipulation of the activation function left or right on a graph. Weight allows the gradient of the activation function to be manipulated.</p>
+
+<h3 id="activation-functions-in-brief">Activation Functions in Brief</h3>
+<p>The frequency of the firing of an artificial neuron is determined by an activation function. It determines at what threshold the neuron will fire. This section describes the Sigmoid activation function to bring clarity to the operation of an artificial neuron. Activation functions will be discussed in detail further on in this section.</p>
+
+<p><img src="assets/images/posts/2018/sigmoid-activation-function.jpg" alt="" /></p>
+
+<p>The graph above shows the Sigmoid activation function, which will convert all input signals into positive values between 0 and 1. The use of other activation functions with wider values, or negative values change the frequency of the firing of a neuron and will suit different types of data and purposes.</p>
+
+<h3 id="practical-exercise">Practical Exercise</h3>
+
+<h3 id="the-perceptron">The Perceptron</h3>
+<p>The foundation of modern neural networks was created in 1956 by Frank Rosenblatt and sort to mimic the architecture of a basic biological neuron, it was called a perceptron. This architecture can be seen in the illustration at the beginning of this chapter.</p>
+
+<p>Classifying flowers
+Scikit-learn includes the Iris flower dataset which is often used for algorithm testing purposes, and it has become somewhat of a “hello world” dataset of neural networks. The aim of our single layer model is to classify flowers from the Iris dataset into different categories.</p>
+
+<p>Installing Scikit-learn via Anaconda
+I recommend installing Anaconda, a scientific python library which includes scikit-learn, all of its dependencies, matlibplot and more. We’ll be using jupyter notebook, formally IPython Notebook, bundled with Anaconda to run our code.</p>
+
+<p><a href="https://www.anaconda.com/download">https://www.anaconda.com/download</a></p>
+
+<p>If you’re having trouble please refer to the scikit-learn or anaconda documentation. Or if conflicts are possible with your existing installations, consider using a virtual machine and start from a clean slate.</p>
+
+<h3 id="jupyter-notebook">Jupyter Notebook</h3>
+<p>Launch jupyter notebook via the Anaconda Navigator application, which was installed with Anaconda.</p>
+
+<p>Create a new Python notebook in the jupyter web interface which has launched.</p>
+
+<p>Now we can write python and run it live in the web interface.</p>
+
+<h3 id="importing-dependencies">Importing Dependencies</h3>
+
+<pre><code class="language-javascript">
+from sklearn import datasets
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Perceptron
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from matplotlib.pyplot as plt
+</code></pre>
+
+<h3 id="the-iris-data-set">The Iris Data Set</h3>
+<p>The Iris dataset consists of 150 samples of four features per sample, measuring the length and width of sepals and petals (in cm), with 50 samples for three species of Iris (Iris setosa, Iris virginica, and Iris versicolor). First featured in British statistician and biologist Ronald Fisher’s research article in 1936 the data set has become a popular test of predictive algorithms, including neural networks.</p>
+
+<p>The Iris dataset is small in comparison to the data sets which are needed for more complex algorithms, for example, in deep learning convolutional neural networks require tens of thousands of data points to learn effectively.</p>
+
+<p>Itallics indicate comments or text output by the console.</p>
+
+<pre><code class="language-javascript">
+#Load the Iris dataset
+iris = datasets.load_iris()
+
+#Assign the data to vertices
+x = iris.data
+y = iris.target
+</code></pre>
+
+<p>Let’s take a look at the data we’re going to manipulate.</p>
+
+<p>x indicies:</p>
+
+<pre><code class="language-javascript">
+#Print the first five features (the four measurements in a 2D array)
+x[:5]
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="language-">
+array([[5.1, 3.5, 1.4, 0.2],
+       [4.9, 3. , 1.4, 0.2],
+       [4.7, 3.2, 1.3, 0.2],
+       [4.6, 3.1, 1.5, 0.2],
+       [5. , 3.6, 1.4, 0.2]])
+</code></pre>
+
+<p>y indicies:</p>
+
+<pre><code class="language-javascript">
+#Print all 150 indices of x axis (the class of each sample)
+y[:150]
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="language-">
+array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+</code></pre>
+
+<p>Neural Networks require the data to be represented as floating point numbers. This allows the decimal points high accuracy to be used by the various calculations within the underlying implementation. Floating point numbers can simply represent data with finer granularity than the ten representations that integers allow. This can be appreciated by looking at the annotated neuron illustration at the start of this section.</p>
+
+<p>The 2D array held in x represents four columns: Sepal Length, Sepal Width, Petal Length and Petal Width.</p>
+
+<h3 id="visualising-the-data-set">Visualising the Data Set</h3>
+<p>Now let’s visualise the data set to get a better idea of what the dataset actually describes.</p>
+
+<pre><code class="language-javascript">
+#Import dataset
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+plt.figure(2, figsize=(8, 6))
+plt.clf()
+
+#Plot graph
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Set1, edgecolor='k')
+plt.xlabel('Sepal length')
+plt.ylabel('Sepal width')
+
+plt.xticks(())
+plt.yticks(())
+
+plt.show()
+</code></pre>
+
+<p><img src="assets/images/posts/2018/irisgraph.jpg" alt="" /></p>
+
+<p>This graph shows the distribution of the three sample types, categorized by two of the features, sepal width and sepal length. Feel free to change the code and visualise the data in different ways.</p>
+
+<h3 id="preparing-the-data">Preparing the Data</h3>
+<p>We need to set aside some of the data set to become the data the perceptron is trained on. This data isn’t used again once the training is complete – the algorithm has already seen and learned from this information, and would serve no purpose to be classified – as the answer is already known.</p>
+
+<pre><code class="language-javascript">
+#Set aside 30% of the data set for training
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
+</code></pre>
+
+<p>The <code class="highlighter-rouge">StandardScaler()</code> function standardised all of the features in a dataset to have a mean of zero and unit variance, to ensure all of the features are distributed normally. Many predictive algorithms require the data set to be standardised otherwise their behavior will be unpredictable.</p>
+
+<pre><code class="language-javascript">
+#Train the scaler, which standarises all the features to have mean of zero and unit variance
+sc = StandardScaler()
+sc.fit(x_train)
+</code></pre>
+
+<p>Now we apply the scaler to each section of the split data set.</p>
+
+<pre><code class="language-javascript">
+#Apply the scaler to the X training data
+x_train_std = sc.transform(x_train)
+
+#Apply the SAME scaler to the X test data
+x_test_std = sc.transform(x_test)
+</code></pre>
+
+<h3 id="scikit-learn-perceptron">Scikit-Learn Perceptron</h3>
+<p>Here we use the <code class="highlighter-rouge">Perceptron()</code> function to invoke a perceptron object with the following parameters:</p>
+
+<p><code class="highlighter-rouge">max_iter</code> is set to a maximum of 50 iterations over the data set, iterations are also referred to as epochs. Remember this word for if you plan to read further texts, it can be confusing having words used interchangeably.</p>
+
+<p><code class="highlighter-rouge">eta0</code> is a constant value by which updates are multiplied. This will ensure the values change and don’t stagnate, it can be thought of as the bias.</p>
+
+<p><code class="highlighter-rouge">verbose</code> is a boolean flag, when set to 1 it will print information for each epoch.</p>
+
+<pre><code class="language-javascript">
+#Create a perceptron object with 50 iterations over the data set, and a learning rate of 0.3
+ppn = Perceptron(max_iter=50, eta0=1, verbose=0)
+
+#Train the perceptron
+ppn.fit(x_train_std, y_train)
+
+Perceptron(alpha=0.0001, class_weight=None, eta0=1, fit_intercept=True,
+      max_iter=50, n_iter=None, n_jobs=1, penalty=None, random_state=0,
+      shuffle=True, tol=None, verbose=0, warm_start=False)
+
+#Apply the trained perceptron on the X data to make predicts for the y test data
+y_pred = ppn.predict(x_test_std)
+</code></pre>
+
+<h3 id="the-results">The Results</h3>
+
+<pre><code class="language-javascript">
+#Print the predicted y test data
+y_pred
+
+array([1, 2, 2, 1, 1, 0, 2, 2, 1, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 1, 2, 1,
+       2, 2, 1, 1, 0, 2, 2, 2, 0, 1, 1, 0, 0, 1, 1, 1, 2, 2, 0, 1, 1, 1,
+       1])
+
+#Print the true y test data
+y_test
+
+array([1, 2, 2, 1, 1, 0, 2, 1, 1, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 1, 2, 0,
+       2, 2, 0, 1, 0, 2, 2, 2, 0, 1, 1, 0, 0, 1, 0, 1, 2, 2, 0, 1, 0, 1,
+       1])
+
+#Print the accuracy of the implementation
+print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
+
+Accuracy: 0.89
+</code></pre>
+
+<p>This implementation of the most simple neural network achieves high accuracy. Throughout multiple runs it achieved between 0.89 and 1.00 accuracy, or said another way it’s 89% to 100% accurate.</p>
+
+<p>This was achieved following the recommended parameter settings found in the scikit-learn documentation. However, trial and error manipulation of the parameters can be an important method in machine learning, so don’t be afraid to experiment. Always consider how the parameters are being used internally, how they affect the data and experiment to see how changing them actually affects the result.</p>
+
+<p>Try changing the parameters for yourself to see how that affects the accuracy. See the scikit-learn perceptron documentation to see other parameters which you can manipulate. Hyperparameter manipulation is an important part of tuning and getting the best out of neural network implementations, as you read through the chapters of this book you will learn more about different parameters and continue to try your hand at practical exercises. Tuning is also discussed in detail in the Tuning and Evaluating Neural Networks chapter.</p>
+
+<h3 id="under-the-hood-the-scikit-learn-perceptron">Under the Hood: The Scikit-Learn Perceptron</h3>
+<p>Programming libraries are created to make the programmers life as easy as possible by providing commonly needed applications written by others. With this as their main aim libraries may not implement algorithms straight from textbooks. Additionally, as libraries are created with modularity in mind, their underlying implementation will likely be more complex than expected.</p>
+
+<p>Scikit-learn’s perceptron is no different. The <code class="highlighter-rouge">Perceptron()</code> function shares the underlying implementation of the SGDClassifier() function, and its functionality differs from traditional simple perceptrons as a result. For example, traditionally perceptrons required data to be linearly separable, that is to be able to be separated cleanly without overlap – imagine a graph with a single line separating two distinct groups of data points on each side.</p>
+
+<p><code class="highlighter-rouge">SGDClassifier()</code> implements regularized linear models utilizing the stochastic gradient descent (SGD) learning algorithm. <code class="highlighter-rouge">SGDClassifier(loss=“perceptron”, eta0=1, learning_rate=“constant”, penalty=None)</code> is equivalent to <code class="highlighter-rouge">Perceptron()</code>.</p>
+
+<h3 id="jargon-buster">Jargon Buster</h3>
+<p>That last bit became a little complicated, so lets break it down. “<code class="highlighter-rouge">SGDClassifier()</code> implements regularized linear models utilizing the stochastic gradient descent (SGD) learning algorithm”</p>
+
+<p>Regularized by adding a penalty to the loss function that reduces the model parameters towards the zero vector, 0.0 on a graph, using one of two methods L1 or L2. Regularization increases the efficiency of the network. This will be discussed more in the chapter on Training Neural Networks.</p>
+
+<p>Linear model, referring to a type of classifier model which defines categories based on the linear combination of a features characteristics. That is a mathematical expression created by multiplying a set of characteristics by a constant and summing the result. <code class="highlighter-rouge">X1 w1 + b</code></p>
+
+<p>Stochastic Gradient Descent (SGD) is a type of backpropagation learning algorithm that calculates gradients based on the values of a batch with the aim of reducing the gradient (imagine a graph with a steadily decreasing learning rate gradient), hence gradient descent. The algorithm splits the data into batches and the gradients are summed and weights updated, similar to backpropagation. Backpropagation, SGD and learning rates are discussed in further chapters within <a href="/practical-deep-learning-fundamentals">Practical Deep Learning Fundamentals</a>.</p>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/practical- deep- learning- fundamentals/'>Practical Deep Learning Fundamentals</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=A+Practical+Introduction+to+Artificial+Neural+Networks+with+Python&amp;url=a-practical-introduction-to-artificial-neural-networks-with-python">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=a-practical-introduction-to-artificial-neural-networks-with-python">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/authorimage.jpg" alt="Kris Bolton's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Kris Bolton</h2>
+                    <p class="author-description">Kris is a Cyber Security masters student with a background in Computer Science (Software Engineering), his research focus is Critical National Infrastructure Defense and National Cyber Defense. He is currently writing a book "Practical Deep Learning Fundamentals.", designed to help fellow programmers self-learn Machine Learning.</p>
+                </div>
+            </div>
+            
+
+        </article>
+
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="July 26, 2018">July 26, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/why-you-should-get-into-machine-learning">Why You Should Get into Machine Learning</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/practical-deep-learning-fundamentals/'>Practical deep learning fundamentals</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/why-you-should-get-into-machine-learning" class="post-thumbnail">
+                    <img src="assets/images/posts/2018/thomas-kvistholt-191153-unsplash.jpg" alt="Why You Should Get into Machine Learning" />
+                </a>
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="March 10, 2019">March 10, 2019</time>
+                    </div>
+                    <h3 class="post-title"><a href="/uk-cyber-security-spending">UK Cyber Security Spending First Results: National Ambulance Services</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/projects/'>Projects</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/uk-cyber-security-spending" class="post-thumbnail">
+                    <img src="assets/images/posts/2018/laptop-cash.jpg" alt="UK Cyber Security Spending First Results: National Ambulance Services" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    <a href="https://twitter.com/krisbolton" target="_blank">
+        <span class="fa-twitter fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Twitter</span>
+    </a>
+    
+    
+    
+    <a href="https://github.com/krisbolton" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://medium.com/@krisbolton" target="_blank">
+        <span class="fa-medium fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">medium</span>
+    </a>
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/krisbolton" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Kris Bolton</a> &copy; 2020 . Horace theme by
+                    <a target="_blank" href="https://justgoodthemes.com/">JustGoodThemes</a>. <br />
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a> and <a target="_blank" href="https://pages.github.com/">GitHub Pages</a>. <br />
+                    <a target="_blank" href="/privacy-policy.html">Privacy Policy</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    <aside id="sidebar" class="sidebar">
+	<div class="sidebar-scrollable">
+		<div class="sidebar-inside">
+			<button id="sidebar-hide" class="sidebar-toggle"><span class="screen-reader-text">Close Sidebar</span><span
+				    aria-hidden="true" class="icon-close"></span></button>
+			<nav id="sidebar-navigation" class="widget site-navigation">
+				<h2 class="widget-title">Explore Site</h2>
+				<ul class="menu">
+					
+						<li class="menu-item"><a href="/">Home</a></li>
+					
+						<li class="menu-item"><a href="/about.html">About</a></li>
+					
+						<li class="menu-item"><a href="/contact.html">Contact</a></li>
+					
+				</ul>
+			</nav>
+			
+<section class="widget widget-text">
+    <h2 class="widget-title">About Kris Bolton</h2>
+    <p>The personal website of Kris Bolton, Cyber Security Research Student.</p>
+</section>
+
+
+<section class="widget widget-recent-posts">
+    <h2 class="widget-title">Recent Articles</h2>
+    <ul>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">March 10, 2019</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/uk-cyber-security-spending">UK Cyber Security Spending First Results: National Ambulance Services</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/uk-cyber-security-spending">
+                <img src="http://localhost:4000/assets/images/posts/2018/laptop-cash.jpg"
+                    alt="UK Cyber Security Spending First Results: National Ambulance Services">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">August 22, 2018</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/a-practical-introduction-to-artificial-neural-networks-with-python">A Practical Introduction to Artificial Neural Networks with Python</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/a-practical-introduction-to-artificial-neural-networks-with-python">
+                <img src="http://localhost:4000/assets/images/posts/2018/biasneuronexample.jpg"
+                    alt="A Practical Introduction to Artificial Neural Networks with Python">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">July 26, 2018</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/why-you-should-get-into-machine-learning">Why You Should Get into Machine Learning</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/why-you-should-get-into-machine-learning">
+                <img src="http://localhost:4000/assets/images/posts/2018/thomas-kvistholt-191153-unsplash.jpg"
+                    alt="Why You Should Get into Machine Learning">
+            </a>
+            
+        </li>
+        
+    </ul>
+</section>
+
+<!-- Create a sorted array of tags -->
+ 
+<section class="widget widget-tagcloud">
+    <h2 class="widget-title">Tags</h2>
+    <div class="tagcloud">
+        
+        <a href='tag/books/'>Books</a>
+        
+        <a href='tag/digital- marketing/'>Digital Marketing</a>
+        
+        <a href='tag/machine- learning/'>Machine Learning</a>
+        
+        <a href='tag/practical- deep- learning- fundamentals/'>Practical Deep Learning Fundamentals</a>
+        
+        <a href='tag/projects/'>Projects</a>
+        
+        <a href='tag/reviews/'>Reviews</a>
+        
+        <a href='tag/sentiment- analysis/'>Sentiment Analysis</a>
+        
+        <a href='tag/writing/'>Writing</a>
+        
+    </div>
+</section>
+
+
+<section class="widget widget-newsletter">
+    <div class="inner">
+        <h2 class="widget-title">Subscribe to Kris Bolton</h2>
+        <p>Get the latest and greatest from Kris Bolton delivered straight to your inbox every week.</p>
+        <!-- Begin MailChimp Signup Form -->
+        <div id="mc_embed_signup">
+            <form action="https://krisbolton.us12.list-manage.com/subscribe/post?u=f493e5bbda4cf62b8809b4b61&amp;id=798a6931cc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                class="validate gh-subscribe-form" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="screen-reader-text">Email Address</label>
+                <input type="email" value="" name="EMAIL" class="required email subscribe-email" id="mce-EMAIL"
+                    placeholder="Your email address">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+            </form>
+        </div>
+    </div>
+</section>
+
+		</div><!-- .sidebar-inside -->
+	</div><!-- .sidebar-scrollable -->
+</aside><!-- .sidebar -->
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-781038-17"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-781038-17', { 'anonymize_ip': true });
+  </script>
+
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>

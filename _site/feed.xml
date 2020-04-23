@@ -5,9 +5,130 @@
     <description>The personal website of Kris Bolton, Cyber Security Research Student.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 22 Apr 2020 00:06:17 +0100</pubDate>
-    <lastBuildDate>Wed, 22 Apr 2020 00:06:17 +0100</lastBuildDate>
-    <generator>Jekyll v3.4.0</generator>
+    <pubDate>Thu, 23 Apr 2020 06:45:48 +0100</pubDate>
+    <lastBuildDate>Thu, 23 Apr 2020 06:45:48 +0100</lastBuildDate>
+    <generator>Jekyll v3.6.3</generator>
+    
+      <item>
+        <title>Experimenting with the Modern Honeypot Network (MHN)</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://github.com/pwnlandia/mhn&quot;&gt;MHN&lt;/a&gt; is an open-source centralized server for managing honeypots, making deployment and data collection simple and fast. MHN currently supports a number of honeypot types, check out the &lt;a href=&quot;https://github.com/pwnlandia/mhn/wiki/List-of-Supported-Sensors&quot;&gt;list of supported sensors&lt;/a&gt; for details, they also allow &lt;a href=&quot;https://github.com/pwnlandia/mhn/wiki/Add-Support-for-New-Sensors-to-the-MHN&quot;&gt;adding new sensors&lt;/a&gt; should you wish.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;setup&quot;&gt;Setup&lt;/h3&gt;
+&lt;p&gt;My goal was to collect malware and aggregate statistics on various connections and attacks against a single sensor server I deployed. The architecture was two nano linode ubuntu 16.04 instances, one acting as the server and the other as the sensor. This turned out well, the nano instance was enough to handle the workload the majority of the time.&lt;/p&gt;
+
+&lt;h4 id=&quot;server-setup&quot;&gt;Server setup&lt;/h4&gt;
+
+&lt;p&gt;Find a server provider, I chose &lt;a href=&quot;https://www.linode.com/&quot;&gt;Linode&lt;/a&gt;. I went with the nano configuration; 1GB RAM, 1CPU, 25GB storage, 1TB bandwidth for $5 per month. Enough for a small setup, as you add sensors the server will need more resources, so provision accordingly.&lt;/p&gt;
+
+&lt;p&gt;Give your server a discriptive name, e.g. “mhn-server”. Ubuntu 16.04 is recommended by MHN as its been tested and verified to work with MHN.&lt;/p&gt;
+
+&lt;p&gt;Secure the mhn-server as your normally would, its intended for you to manage sensors, you’re not looking for attackers to attack this instance.&lt;/p&gt;
+
+&lt;h4 id=&quot;server-steps&quot;&gt;Server steps&lt;/h4&gt;
+
+&lt;h6 id=&quot;create-a-non-root-user&quot;&gt;Create a non-root user.&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;adduser deploy&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Don’t install MHN as root, it will not work as intended.&lt;/p&gt;
+
+&lt;h6 id=&quot;add-deploy-as-sudo-user-under-user-privilage-specification&quot;&gt;Add deploy as sudo user under ‘user privilage specification’:&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;visudo&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy ALL=(ALL:ALL) ALL&lt;/code&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;switch-to-the-deploy-user&quot;&gt;Switch to the deploy user:&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;su deploy&lt;/code&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;clone-the-mhn-github-repo&quot;&gt;Clone the MHN GitHub repo:&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/pwnlandia/mhn.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;change-to-the-mhn-directory&quot;&gt;Change to the mhn directory:&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cd mhn&lt;/code&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;run-the-installation-script&quot;&gt;Run the installation script:&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo ./install.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Towards the end of the installation you’ll be asked a series of questions. I chose no debug mode, I added a new gmail I created - &lt;strong&gt;this will also be used to login to the web interface&lt;/strong&gt;. I didn’t need splunk or ELK. I left the rest of the options as default.&lt;/p&gt;
+
+&lt;h6 id=&quot;login-to-the-web-interface&quot;&gt;Login to the web interface.&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ipconfig&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy &amp;amp; paste the IP into a browser on your machine, and login with the email and password you provided earlier.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The server’s done!&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;sensor-setup&quot;&gt;Sensor setup&lt;/h4&gt;
+
+&lt;p&gt;Create a second instance on your service provider, again using a descriptive name - this helps if you scale things up later. I went with ‘mhn-snort-dionaea’.&lt;/p&gt;
+
+&lt;p&gt;Snort is an intrusion detection system (IDS), which will provide detail on attacks against the server. It can be configurted extensively, see the &lt;a href=&quot;https://www.snort.org/documents&quot;&gt;snort documentation&lt;/a&gt; for more.&lt;/p&gt;
+
+&lt;p&gt;Dionaea is a a honeypot emulating various network services to capture malware. See the &lt;a href=&quot;https://dionaea.readthedocs.io/en/latest/&quot;&gt;dionaea documentation&lt;/a&gt; for specific confifuration details.&lt;/p&gt;
+
+&lt;h4 id=&quot;sensor-steps&quot;&gt;Sensor steps&lt;/h4&gt;
+
+&lt;h6 id=&quot;select-a-script&quot;&gt;Select a script&lt;/h6&gt;
+
+&lt;p&gt;In the web interface provided by the mhn-server, go to the deploy tab and chose the sensor you want to deploy from the ‘select script’ drop down menu.&lt;/p&gt;
+
+&lt;h6 id=&quot;copy--paste-wget-string&quot;&gt;Copy &amp;amp; paste wget string&lt;/h6&gt;
+
+&lt;p&gt;Sensor stepup is as easy as copy &amp;amp; pasting the &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; command string into the sensor instance.&lt;/p&gt;
+
+&lt;h6 id=&quot;check-the-sensors-tab&quot;&gt;Check the sensors tab&lt;/h6&gt;
+
+&lt;p&gt;Click the sensors tab in the web interface to view your new sensor.&lt;/p&gt;
+
+&lt;h6 id=&quot;dionaea&quot;&gt;Dionaea&lt;/h6&gt;
+
+&lt;p&gt;Follow the same steps copy &amp;amp; pasting the &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; script string for dionaea into the mhn-snort-dionaea instance.&lt;/p&gt;
+
+&lt;p&gt;Now you have snort and dionaea setup and running. You can view incoming attacks in the web interface.&lt;/p&gt;
+
+&lt;h3 id=&quot;collecting-data&quot;&gt;Collecting data&lt;/h3&gt;
+
+&lt;p&gt;As mentioned towards the beginning, my intention was to gather aggregate statistics and hopefully some malware files. Your goals may be different and you can add different sensors and service configurations to achieve your goals.&lt;/p&gt;
+
+&lt;p&gt;Immidiately I saw a small number of attacks coming in, surprising how quickly your services are found.&lt;/p&gt;
+
+&lt;p&gt;Within 24 hours I had logged over &lt;em&gt;300,000&lt;/em&gt; scans and attacks from across the world. The web interface provides an enticing global attack map (below). The yellow dot shows the location of the server and the red dots show attacker locations.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/honeypot-map.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The sensor CPU handled the incoming traffic well, utilising around 40% max (observed). As scans/attacks increase between approx. 08:00 and 11:50 I turn on &lt;code class=&quot;highlighter-rouge&quot;&gt;ufw&lt;/code&gt;, the linux firewall, to observe the effect out of interest. This is why the graph shows connections and CPU suddenly drop.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/cpuhoneypot.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/traffichoneypot.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Later I turned the firewall off and resumed data collection.&lt;/p&gt;
+
+&lt;p&gt;I’m planning on putting together a more detailed post of the data I captured. It won’t be anything particularly special, mostly data on which ports were most attacked, perhaps hints at attack behaviour. Dionaea did capture some files, but I’ve yet to take a look.&lt;/p&gt;
+
+&lt;p&gt;Look out for the details and lessons learned in an up-coming post.&lt;/p&gt;
+
+&lt;h4 id=&quot;reminder&quot;&gt;Reminder&lt;/h4&gt;
+
+&lt;p&gt;Whenever you do anything with malware consider the legal implications. Here you are collecting malware - likely a legal activity within your country. However, this quickly changes should you distribute it. Setting the server to be publicly available so you can download the malware, for example. To be clear, this is not legal advice, I am not a legal expert. As ever, seek advice specific to your location and proceed with caution.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 Apr 2020 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/experimenting-with-the-modern-honey-network</link>
+        <guid isPermaLink="true">http://localhost:4000/experimenting-with-the-modern-honey-network</guid>
+        
+        <category>Security</category>
+        
+        <category>Honeypots</category>
+        
+        
+      </item>
     
       <item>
         <title>UK Cyber Security Spending First Results: National Ambulance Services</title>

@@ -18,8 +18,8 @@ author:
   name: 'Kris Bolton'
   image: 'authorimage.jpg'
   greetings: 'Hi there!'
-  description: "My name is Kris Bolton. I'm a Cyber Security research student (MSc) and Machine Learning enthusiast from the United Kingdom. It’s nice to meet you."
-  bio: 'Kris is a Cyber Security masters student with a background in Computer Science (Software Engineering), his research focus is Critical National Infrastructure Defense and Advanced Persistent Threats.'
+  description: "My name is Kris Bolton. I'm a cyber security research student (MSc) from the United Kingdom. It’s nice to meet you."
+  bio: 'Kris is a cyber security masters student with a background in computer science (BSc software engineering), his research areas include Advanced Persistent Threats (APTs), Critical National Infrastructure (CNI) defense and machine learning.'
 
 # Contact form setings
 email: krisbolton@gmail.com

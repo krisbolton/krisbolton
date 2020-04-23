@@ -4,8 +4,6 @@ title: "A Practical Introduction to Artificial Neural Networks with Python"
 tags: [ Machine Learning ]
 featured_image_thumbnail: assets/images/posts/2018/biasneuronexample.jpg
 featured_image: assets/images/posts/2018/clement-h-544786-unsplash.jpg
-featured: true
-hidden: true
 ---
 ### An Introduction to Artificial Neural Networks
 Artificial neurons mimic the basic function of biological neurons, and much like their biological counterparts they only become useful when connected in a larger network, called Artificial Neural Networks. Neural networks may mimic the basic building block of the human brain, however, when connected to a larger network artificial neurons do not inherit their biological counterparts ability of what is termed “general intelligence”. Even the largest collection of artificial neurons are not intelligent. Artificial Neural Networks are only capable of performing specific tasks.

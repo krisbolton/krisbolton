@@ -5,8 +5,8 @@
     <description>The personal website of Kris Bolton, Cyber Security Research Student.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 23 Apr 2020 06:45:48 +0100</pubDate>
-    <lastBuildDate>Thu, 23 Apr 2020 06:45:48 +0100</lastBuildDate>
+    <pubDate>Thu, 23 Apr 2020 06:52:00 +0100</pubDate>
+    <lastBuildDate>Thu, 23 Apr 2020 06:52:00 +0100</lastBuildDate>
     <generator>Jekyll v3.6.3</generator>
     
       <item>
@@ -22,7 +22,7 @@
 
 &lt;p&gt;Find a server provider, I chose &lt;a href=&quot;https://www.linode.com/&quot;&gt;Linode&lt;/a&gt;. I went with the nano configuration; 1GB RAM, 1CPU, 25GB storage, 1TB bandwidth for $5 per month. Enough for a small setup, as you add sensors the server will need more resources, so provision accordingly.&lt;/p&gt;
 
-&lt;p&gt;Give your server a discriptive name, e.g. “mhn-server”. Ubuntu 16.04 is recommended by MHN as its been tested and verified to work with MHN.&lt;/p&gt;
+&lt;p&gt;Give your server a descriptive name, e.g. “mhn-server”. Ubuntu 16.04 is recommended by MHN as its been tested and verified to work with MHN.&lt;/p&gt;
 
 &lt;p&gt;Secure the mhn-server as your normally would, its intended for you to manage sensors, you’re not looking for attackers to attack this instance.&lt;/p&gt;
 
@@ -34,7 +34,7 @@
 
 &lt;p&gt;Don’t install MHN as root, it will not work as intended.&lt;/p&gt;
 
-&lt;h6 id=&quot;add-deploy-as-sudo-user-under-user-privilage-specification&quot;&gt;Add deploy as sudo user under ‘user privilage specification’:&lt;/h6&gt;
+&lt;h6 id=&quot;add-deploy-as-sudo-user-under-user-privilege-specification&quot;&gt;Add deploy as sudo user under ‘user privilege specification’:&lt;/h6&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;visudo&lt;/code&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;deploy ALL=(ALL:ALL) ALL&lt;/code&gt;&lt;/p&gt;
@@ -69,9 +69,9 @@
 
 &lt;p&gt;Create a second instance on your service provider, again using a descriptive name - this helps if you scale things up later. I went with ‘mhn-snort-dionaea’.&lt;/p&gt;
 
-&lt;p&gt;Snort is an intrusion detection system (IDS), which will provide detail on attacks against the server. It can be configurted extensively, see the &lt;a href=&quot;https://www.snort.org/documents&quot;&gt;snort documentation&lt;/a&gt; for more.&lt;/p&gt;
+&lt;p&gt;Snort is an intrusion detection system (IDS), which will provide detail on attacks against the server. It can be configured extensively, see the &lt;a href=&quot;https://www.snort.org/documents&quot;&gt;snort documentation&lt;/a&gt; for more.&lt;/p&gt;
 
-&lt;p&gt;Dionaea is a a honeypot emulating various network services to capture malware. See the &lt;a href=&quot;https://dionaea.readthedocs.io/en/latest/&quot;&gt;dionaea documentation&lt;/a&gt; for specific confifuration details.&lt;/p&gt;
+&lt;p&gt;Dionaea is a a honeypot emulating various network services to capture malware. See the &lt;a href=&quot;https://dionaea.readthedocs.io/en/latest/&quot;&gt;dionaea documentation&lt;/a&gt; for specific configuration details.&lt;/p&gt;
 
 &lt;h4 id=&quot;sensor-steps&quot;&gt;Sensor steps&lt;/h4&gt;
 
@@ -81,7 +81,7 @@
 
 &lt;h6 id=&quot;copy--paste-wget-string&quot;&gt;Copy &amp;amp; paste wget string&lt;/h6&gt;
 
-&lt;p&gt;Sensor stepup is as easy as copy &amp;amp; pasting the &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; command string into the sensor instance.&lt;/p&gt;
+&lt;p&gt;Sensor setup is as easy as copy &amp;amp; pasting the &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; command string into the sensor instance.&lt;/p&gt;
 
 &lt;h6 id=&quot;check-the-sensors-tab&quot;&gt;Check the sensors tab&lt;/h6&gt;
 
@@ -97,7 +97,7 @@
 
 &lt;p&gt;As mentioned towards the beginning, my intention was to gather aggregate statistics and hopefully some malware files. Your goals may be different and you can add different sensors and service configurations to achieve your goals.&lt;/p&gt;
 
-&lt;p&gt;Immidiately I saw a small number of attacks coming in, surprising how quickly your services are found.&lt;/p&gt;
+&lt;p&gt;Immediately, I saw a small number of attacks coming in, surprising how quickly your services are found.&lt;/p&gt;
 
 &lt;p&gt;Within 24 hours I had logged over &lt;em&gt;300,000&lt;/em&gt; scans and attacks from across the world. The web interface provides an enticing global attack map (below). The yellow dot shows the location of the server and the red dots show attacker locations.&lt;/p&gt;
 

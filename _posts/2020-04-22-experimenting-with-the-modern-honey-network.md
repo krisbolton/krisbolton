@@ -19,7 +19,7 @@ My goal was to collect malware and aggregate statistics on various connections a
 
 Find a server provider, I chose [Linode](https://www.linode.com/). I went with the nano configuration; 1GB RAM, 1CPU, 25GB storage, 1TB bandwidth for $5 per month. Enough for a small setup, as you add sensors the server will need more resources, so provision accordingly.
 
-Give your server a discriptive name, e.g. "mhn-server". Ubuntu 16.04 is recommended by MHN as its been tested and verified to work with MHN.
+Give your server a descriptive name, e.g. "mhn-server". Ubuntu 16.04 is recommended by MHN as its been tested and verified to work with MHN.
 
 Secure the mhn-server as your normally would, its intended for you to manage sensors, you're not looking for attackers to attack this instance.
 
@@ -31,7 +31,7 @@ Secure the mhn-server as your normally would, its intended for you to manage sen
 
 Don't install MHN as root, it will not work as intended.
 
-###### Add deploy as sudo user under 'user privilage specification':
+###### Add deploy as sudo user under 'user privilege specification':
 
 `visudo`
 `deploy ALL=(ALL:ALL) ALL`
@@ -67,9 +67,9 @@ _The server's done!_
 
 Create a second instance on your service provider, again using a descriptive name - this helps if you scale things up later. I went with 'mhn-snort-dionaea'.
 
-Snort is an intrusion detection system (IDS), which will provide detail on attacks against the server. It can be configurted extensively, see the [snort documentation](https://www.snort.org/documents) for more.
+Snort is an intrusion detection system (IDS), which will provide detail on attacks against the server. It can be configured extensively, see the [snort documentation](https://www.snort.org/documents) for more.
 
-Dionaea is a a honeypot emulating various network services to capture malware. See the [dionaea documentation](https://dionaea.readthedocs.io/en/latest/) for specific confifuration details.
+Dionaea is a a honeypot emulating various network services to capture malware. See the [dionaea documentation](https://dionaea.readthedocs.io/en/latest/) for specific configuration details.
 
 #### Sensor steps
 
@@ -79,7 +79,7 @@ In the web interface provided by the mhn-server, go to the deploy tab and chose 
 
 ###### Copy & paste wget string
 
-Sensor stepup is as easy as copy & pasting the `wget` command string into the sensor instance.
+Sensor setup is as easy as copy & pasting the `wget` command string into the sensor instance.
 
 ###### Check the sensors tab
 
@@ -96,7 +96,7 @@ Now you have snort and dionaea setup and running. You can view incoming attacks 
 
 As mentioned towards the beginning, my intention was to gather aggregate statistics and hopefully some malware files. Your goals may be different and you can add different sensors and service configurations to achieve your goals.
 
-Immidiately I saw a small number of attacks coming in, surprising how quickly your services are found.
+Immediately, I saw a small number of attacks coming in, surprising how quickly your services are found.
 
 Within 24 hours I had logged over _300,000_ scans and attacks from across the world. The web interface provides an enticing global attack map (below). The yellow dot shows the location of the server and the red dots show attacker locations.
 

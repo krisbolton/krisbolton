@@ -33,6 +33,10 @@
 <lastmod>2020-04-22T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/3D-maps-with-satellite-imagery-in-r</loc>
+<lastmod>2020-04-29T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about</loc>
 </url>
 <url>
@@ -67,6 +71,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/honeypots/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/visualization/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/page2/</loc>

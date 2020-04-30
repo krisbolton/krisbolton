@@ -4,8 +4,6 @@ title: "Experimenting with the Modern Honeypot Network (MHN)"
 tags: [ Security, Honeypots ]
 featured_image_thumbnail: assets/images/posts/2020/honeypot-map.png
 featured_image: assets/images/posts/2020/honeypot-map.png
-featured: true
-hidden: true
 ---
 
 [MHN](https://github.com/pwnlandia/mhn) is an open-source centralized server for managing honeypots, making deployment and data collection simple and fast. MHN currently supports a number of honeypot types, check out the [list of supported sensors](https://github.com/pwnlandia/mhn/wiki/List-of-Supported-Sensors) for details, they also allow [adding new sensors](https://github.com/pwnlandia/mhn/wiki/Add-Support-for-New-Sensors-to-the-MHN) should you wish.

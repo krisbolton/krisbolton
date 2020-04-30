@@ -5,9 +5,209 @@
     <description>The personal website of Kris Bolton, Cyber Security Research Student.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Apr 2020 10:09:17 +0100</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2020 10:09:17 +0100</lastBuildDate>
+    <pubDate>Thu, 30 Apr 2020 14:32:02 +0100</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 14:32:02 +0100</lastBuildDate>
     <generator>Jekyll v3.6.3</generator>
+    
+      <item>
+        <title>3D Maps with Satellite Imagery in R</title>
+        <description>&lt;p&gt;Ths is my first foray into geographic information systems (GIS) and 3D map visualization. I was inspired by a post and tutorial by &lt;a href=&quot;https://www.tylermw.com/&quot;&gt;Tyler Morgan-Wall&lt;/a&gt;, a physicist and data scientist from the US. I delved into R breifly back undergrad out of general interest, however you don’t need to have used R before to follow these or Tyler’s steps.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;I’ve written up my experience, as it differs a little from the steps laid out in his &lt;a href=&quot;https://www.tylermw.com/a-step-by-step-guide-to-making-3d-maps-with-satellite-imagery-in-r/&quot;&gt;blog post tutorial&lt;/a&gt;, as I didn’t have most of the R packages installed and I ran into a few issues. I went through Tyler’s tutorial twice, once on my macbook and again on Windows I was attempting to gain faster render times for the final product, so the following will work on Windows and Mac. If you’re even mildly interested in visualizing maps in 3D or R programming check out &lt;a href=&quot;https://www.tylermw.com/&quot;&gt;Tyler’s blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-r&quot;&gt;Installing R&lt;/h3&gt;
+
+&lt;p&gt;Install &lt;a href=&quot;https://www.r-project.org&quot;&gt;R&lt;/a&gt;, &lt;a href=&quot;https://rstudio.com&quot;&gt;R Studio&lt;/a&gt; an IDE for R and &lt;a href=&quot;https://www.xquartz.org&quot;&gt;XQuartz&lt;/a&gt; in addition if you’re on Mac.&lt;/p&gt;
+
+&lt;h3 id=&quot;visualizing-the-cuillin&quot;&gt;Visualizing The Cuillin&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/cuillin-mountain-range.jpg#wide&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re going to visualize &lt;a href=&quot;https://en.wikipedia.org/wiki/Cuillin&quot;&gt;The Cuillin&lt;/a&gt;, a range of mountains which are part of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Isle_of_Skye&quot;&gt;Isle of Skye, Scotland&lt;/a&gt;. The area has featured in movies, such as Prometheus due to its &lt;a href=&quot;https://www.youtube.com/watch?v=f95PYiOqRfs&quot;&gt;ailen-world visuals&lt;/a&gt; and general &lt;a href=&quot;https://www.flickr.com/photos/127130111@N06/36228599326&quot;&gt;stunning beauty&lt;/a&gt;. I was hoping to produce imagery as visually appealing as Tyler Morgan-Wall’s render of Zion National Park, sadly, my render doesn’t appear as detailed and it’s quite dark. But, I managed to create a 3D render of the selected area, so I can’t complain. I’ll investigate making it look prettier another time.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-the-data&quot;&gt;Getting the Data&lt;/h3&gt;
+
+&lt;p&gt;You will need to make an account to gather the data you need at &lt;a href=&quot;https://ers.cr.usgs.gov/register/&quot;&gt;USGS&lt;/a&gt;. If at any point you’re greeted with the requirement for a password when downloading data, you need to make an account with the data owner.&lt;/p&gt;
+
+&lt;h4 id=&quot;elevation-data&quot;&gt;Elevation Data&lt;/h4&gt;
+
+&lt;p&gt;Once you have your account, head over to &lt;a href=&quot;https://dwtkns.com/srtm30m/&quot;&gt;30-Meter SRTM Tile Downloader&lt;/a&gt;, a website which makes finding the data you want much easier. The &lt;a href=&quot;https://dds.cr.usgs.gov/srtm/&quot;&gt;USGS&lt;/a&gt; website lists the data in a never ending series of N00E072.htg.zip, buried in a series of folders with names you don’t understand. The tile downloader provides a map of earth overlaid with tiles of the respective 30-meter resolution elevation data.&lt;/p&gt;
+
+&lt;p&gt;Select and download the area of the data you want. If the area overlaps more than one square, that’s fine we can merge the data sets in R.&lt;/p&gt;
+
+&lt;h4 id=&quot;satellite-imagery&quot;&gt;Satellite Imagery&lt;/h4&gt;
+
+&lt;p&gt;On the &lt;a href=&quot;https://earthexplorer.usgs.gov/&quot;&gt;USGS Earth Explorer&lt;/a&gt; navigate to the Isle of Skye, sticking out at the north western edge of Scotland, shielded by the Outer Hebrides.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/skye-satellite-view.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click ‘Use Map’ on the side pannel on the left, this will add a red bounding box around the edge of the area you are viewing.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/use-map-usgs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the Data Sets tab on the left pannel, select &lt;code class=&quot;highlighter-rouge&quot;&gt;Landsat &amp;gt; Landsat Collection 1 Level-1 &amp;gt; Landsat 8 OLI/TIRS C1 Level-1&lt;/code&gt;, and click results at the bottom.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/landsat-select-usgs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This will search the area you selected a few moments ago for availalbe imagery. Now you just have to find a picture. At the time I was using the application a suitable picture was number 4 on the list. Be careful not to choose an image full of cloud.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/dl-options-usgs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Download the TIF file of the image you want. This will be quite large (~850MB), but it includes seperate image RGB channels which we’ll be using later.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/download-usgs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-code&quot;&gt;The Code&lt;/h3&gt;
+
+&lt;p&gt;The following code is simply the code from Tyler Morgan-Wall’s blog post (under MIT license) on the subject. I considered cutting it down, but that would rob the reader of the step-by-step nature of Tyler’s metholody, and its helpful to see each step in turn. I added additional libraries which are required, and I changed the name of the variables to correspond to the different location (Isle of Skye).&lt;/p&gt;
+
+&lt;p&gt;If you want to create imagery as visually appealing as his, you can copy &amp;amp; paste the libraries below, and then follow his steps from the top. That was the consistent issue I faced as code ran, along with the multi-program initial set up.&lt;/p&gt;
+
+&lt;h4 id=&quot;install-packages&quot;&gt;Install packages&lt;/h4&gt;
+
+&lt;p&gt;Open R Studio and create a new R script (&lt;code class=&quot;highlighter-rouge&quot;&gt;File &amp;gt; New File &amp;gt; R Script&lt;/code&gt;). Add the following libraries which will be installed at runtime.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;library(rayshader)
+library(sp)
+library(raster)
+library(scales)
+library(magrittr)
+library(rgdal)
+library(magick)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;add-the-datasets-and-merge&quot;&gt;Add the datasets, and merge&lt;/h4&gt;
+
+&lt;p&gt;Let’s load the elevation data, merge the two datasets into &lt;code class=&quot;highlighter-rouge&quot;&gt;skye_elevation&lt;/code&gt;, plot height using the data and render the map. Move the downloaded hgt files into a folder somewhere and replace the file paths below with your own. If you don’t need to merge datasets simply remove the second line and replace assignment of &lt;code class=&quot;highlighter-rouge&quot;&gt;skye_elevation&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;elevation1&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;skye_elevation = elevation1&lt;/code&gt;), this just means you don’t need to replace that variable multiple places in the code, its not good code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;elevation1 = raster::raster(&quot;C:/Users/USER/Documents/Dev/N57W006.hgt&quot;)
+elevation2 = raster::raster(&quot;C:/Users/USER/Documents/Dev/N57W007.hgt&quot;)
+
+skye_elevation = raster::merge(elevation1,elevation2)
+
+height_shade(raster_to_matrix(skye_elevation)) %&amp;gt;%
+  plot_map()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open the plots tab in R Studio (bottom right). Our first output. Nice! It shows a heat-map of the elevation of the area.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/heatmap-plot-skye.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we’ll load the RGB (Red, Green, Blue) channels from the TIF zipped folder we downloaded earlier, these will be combined to make our satellite image. The folder will need unzipping and a folder created from that will need unzipping on Windows, Mac is one upzip. The TIF files ending B4, B3, B2 are the reg, green and blue channels respectively. You can delete the other files to save some space.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;skye_r = raster::raster(&quot;C:/Users/USER/Documents/Dev/B4.TIF&quot;)
+skye_g = raster::raster(&quot;C:/Users/USER/Documents/Dev/B3.TIF&quot;)
+skye_b = raster::raster(&quot;C:/Users/USER/Documents/Dev/B2.TIF&quot;)
+
+skye_rbg = raster::stack(skye_r, skye_g, skye_b)
+raster::plotRGB(skye_rbg, scale=255^2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/skye-raster.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As Tyler points out, this is a little dark. We need to apply gamma:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;skye_rbg_corrected = sqrt(raster::stack(skye_r, skye_g, skye_b))
+raster::plotRGB(skye_rbg_corrected)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/skye-raster-gamma.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s better, if a little washed-out. We’ll add contrast later to fix that.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;raster::crs(skye_r)
+
+raster::crs(skye_elevation)
+
+crs(skye_r)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above reveals a problem, the coordinate systems for elevation and the image data aren’t of the same type. We fix this by transforming the elevation data to UTM coordinates using &lt;code class=&quot;highlighter-rouge&quot;&gt;raster::projectRaster()&lt;/code&gt; and store it in &lt;code class=&quot;highlighter-rouge&quot;&gt;skye_elevation_utm&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;skye_elevation_utm = raster::projectRaster(skye_elevation, crs = crs(skye_r), method = &quot;bilinear&quot;)
+crs(skye_elevation_utm)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we’ll crop the data to a desired area, we’re going to focus on the Cuillin mountain range in the south of Skye. Head back to the USGS Earth Explorer, where you obtained the satellite imagary and find the appropraite bottom left and top right longditude and latitude coordinates to crop to. You may encounter errors which indicate you’re cropping an area not within the bounds of the data, or which indicate you’ve entered the long/lat incorrectly - somehow when typing I managed to reverse x/y.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;bottom_left = c(y=-6.3460, x=57.1407)
+top_right   = c(y=-6.0081, x=57.3299)
+
+extent_latlong = sp::SpatialPoints(rbind(bottom_left, top_right), proj4string=sp::CRS(&quot;+proj=longlat +ellps=WGS84 +datum=WGS84&quot;))
+extent_utm = sp::spTransform(extent_latlong, raster::crs(skye_elevation_utm))
+
+e = raster::extent(extent_utm)
+e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Below we crop the datasets, create an array containing the RGB values and convert the elevation data to an R matrix, which is what the rayshader function expects.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;skye_rgb_cropped = raster::crop(skye_rbg_corrected, e)
+elevation_cropped = raster::crop(skye_elevation_utm, e)
+
+names(skye_rgb_cropped) = c(&quot;r&quot;,&quot;g&quot;,&quot;b&quot;)
+
+skye_r_cropped = rayshader::raster_to_matrix(skye_rgb_cropped$r)
+skye_g_cropped = rayshader::raster_to_matrix(skye_rgb_cropped$g)
+skye_b_cropped = rayshader::raster_to_matrix(skye_rgb_cropped$b)
+
+zionel_matrix = rayshader::raster_to_matrix(elevation_cropped)
+
+skye_rgb_array = array(0,dim=c(nrow(skye_r_cropped),ncol(skye_r_cropped),3))
+
+skye_rgb_array[,,1] = skye_r_cropped/255 #Red layer
+skye_rgb_array[,,2] = skye_g_cropped/255 #Blue layer
+skye_rgb_array[,,3] = skye_b_cropped/255 #Green layer
+
+skye_rgb_array = aperm(skye_rgb_array, c(2,1,3))
+
+plot_map(skye_rgb_array)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/skye-cuillin-crop.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We increase the contrast using the &lt;code class=&quot;highlighter-rouge&quot;&gt;scales::rescale()&lt;/code&gt; function and generate our image.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;skye_rgb_contrast = scales::rescale(skye_rgb_array,to=c(0,1))
+
+plot_map(skye_rgb_contrast)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/skye-cuillin-crop.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Looking pretty good. Not as vibrant and appealing as Tyle’s, but it’s a first try.&lt;/p&gt;
+
+&lt;p&gt;Now for the bit you’re doing this for, the 3D render of the location:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;plot_3d(skye_rgb_contrast, zionel_matrix, windowsize = c(1100,900), zscale = 15, shadowdepth = -50,
+        zoom=0.5, phi=45,theta=-45,fov=70, background = &quot;#F2E1D0&quot;, shadowcolor = &quot;#523E2B&quot;)
+render_snapshot(title_text = &quot;The Cuillin, Isle of Skye, Scotland | Imagery: Landsat 8 | DEM: 30m SRTM&quot;,
+                title_bar_color = &quot;#1f5214&quot;, title_color = &quot;white&quot;, title_bar_alpha = 1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This can be finiky on Windows, you might not be albe to access the x icon to close the window which is created, but resizing the window by draging pops the window top down into view. I’m likely missing a function or parameter I’m unaware of, or its a bug.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-final-result&quot;&gt;The Final Result&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/posts/2020/3d-raster-cuillin-skye.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Woohoo! 3D maps.&lt;/p&gt;
+
+&lt;p&gt;Tyler goes a step further to create a rotating video. It took around 20 minutes for me to render, despite a i7-5820K - although R is single threaded by default. I went down a rabbithole learning about paralell processing in R, so I’m looking to reduce that time as once I’ve figured out how to make the images look better, like Tyler’s examples, as I’d like to render some interesting locations and add the images to Wikipedia.&lt;/p&gt;
+
+&lt;p&gt;Hope you enjoyed the write up. See you again next time.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 29 Apr 2020 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/3D-maps-with-satellite-imagery-in-r</link>
+        <guid isPermaLink="true">http://localhost:4000/3D-maps-with-satellite-imagery-in-r</guid>
+        
+        <category>Visualization</category>
+        
+        
+      </item>
     
       <item>
         <title>Experimenting with the Modern Honeypot Network (MHN)</title>

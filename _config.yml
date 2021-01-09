@@ -4,13 +4,13 @@ title: Kris Bolton
 logo: # You can add own logo. For example '/images/logo.png'.
 description: Kris Bolton teaches artificial intelligence and writes about security, computer science and the future.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://joseph-jekyll.netlify.app/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://krisbolton.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # Author Settings
 author:
   name: Kris Bolton
-  bio: I'm a researcher and teacher. I teach artificial intelligence and write about cyber security, computer science and the future.
+  bio: A researcher and teacher. I teach artificial intelligence and write about cyber security, computer science and the future.
   avatar: '/images/kris-bolton-profile.jpg'
 
 social:
@@ -26,7 +26,7 @@ social:
 # Hero Settings
 hero:
   hero__title: Hey, I’m Kris! Researcher & Teacher.
-  hero__description: I teach artificial intelligence techniques to programmers and write about security, computer science and the future. You'll find discussion and resources here.
+  hero__description: I teach artificial intelligence techniques to programmers and write about security, computer science and the future. You will find discussion and resources here.
   hero__image: '/images/kris-bolton.jpg'
 
 
@@ -42,7 +42,7 @@ mailchimp__button__text: Join # Add your button text
 #-------------------------------
 # Contact Settings
 contact:
-  email: your@email.com # Add your email for contact form
+  email: alt.krisb@gmail.com # Add your email for contact form
   description: # Add a description of your form
 
 # NOTE
@@ -79,7 +79,7 @@ defaults:
       permalink: /:basename:output_ext
 
 include:
-  - _pages/
+  - _pages
 
 # Tags
 tag_page_dir:         tag

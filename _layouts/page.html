@@ -2,19 +2,30 @@
 layout: default
 ---
 
-<div id="content" class="site-content fadeInDown delay_075s">
-    <main id="main" class="site-main outer">
-        <article class="post-full inner">
-            <header class="post-header">
-                <h1 class="post-title">{{ page.title }}</h1>
-            </header><!-- .post-header -->
-            {% if page.featured_image %}
-            <div class="post-thumbnail"><img src="{{ site.baseurl }}{{ page.featured_image }}" alt="{% if page.featured_image_alt %}{{ page.featured_image_alt }}{% else %}{{ page.title }}{% endif %}" /></div>
-            {% endif %}
-            <div class="post-content">
-                {{content}}
-            </div>
-        </article>
-
-    </main>
+{% if page.image %}
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="page-image">
+        <img src="{{site.baseurl}}{{page.image}}" alt="{{page.title}}">
+      </div>
+    </div>
+  </div>
 </div>
+{% endif %}
+
+<!-- begin page -->
+<div class="container animate">
+
+  <div class="page__info">
+    <h1 class="page__title">{{ page.title | escape }}</h1>
+  </div>
+
+  <article class="page">
+    <div class="page__content">
+      {{ content }}
+    </div>
+  </article>
+
+</div>
+<!-- end page -->

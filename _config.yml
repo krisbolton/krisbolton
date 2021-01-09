@@ -1,69 +1,91 @@
-# Site setings
-name: 'Kris Bolton'
-description: 'The personal website of Kris Bolton, Cyber Security Research Student.'
-meta_description: 'Cyber Security.'
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/favicon.ico'
-baseurl: 
-production_url: 
-disqus:
-mailchimp_url: 'https://krisbolton.us12.list-manage.com/subscribe/post?u=f493e5bbda4cf62b8809b4b61&amp;id=798a6931cc'
-cover_image: bc_1.jpg
-# Add your GA Tracking Id
-ga_analytics: UA-781038-17
+#-------------------------------
+# General Site Settings
+title: Kris Bolton
+logo: # You can add own logo. For example '/images/logo.png'.
+description: Kris Bolton teaches artificial intelligence and writes about security, computer science and the future.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://joseph-jekyll.netlify.app/" # the base hostname & protocol for your site, e.g. http://example.com
 
-
-# Author
+#-------------------------------
+# Author Settings
 author:
-  name: 'Kris Bolton'
-  image: 'authorimage.jpg'
-  greetings: 'Hi there!'
-  description: "My name is Kris Bolton. I'm a cyber security research student (MSc) from the United Kingdom. It’s nice to meet you."
-  bio: 'Kris is a cyber security masters student with a background in computer science (BSc software engineering), his research areas include Advanced Persistent Threats (APTs), Critical National Infrastructure (CNI) defense and machine learning.'
+  name: Kris Bolton
+  bio: I'm a researcher and teacher. I teach artificial intelligence and write about cyber security, computer science and the future.
+  avatar: '/images/kris-bolton-profile.jpg'
 
-# Contact form setings
-email: krisbolton@gmail.com
-contact_page_description:
+social:
+- {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com/krisbolton"}
+- {icon: "ion-logo-github", label: GitHub, link: "https://github.com/krisbolton"}
+- {icon: "ion-icon-person", label: 0x00 Sec, link: "https://0x00sec.org/u/kris/summary"}
+- {icon: "ion-icon-mail", label: Mail, link: "/contact/"}
 
-# Social links
-twitter: 'krisbolton'
-facebook:
-github: 'krisbolton'
-codepen:
-dribbble: 
-medium: '@krisbolton'
-instagram:
-pinterest:
-linkedin: 'krisbolton'
-producthunt:
+# Example of adding a new link to the author section and footer - {icon: "ion-logo-github", label: Github, link: "https://github.com"}
+# Other icons can be found at https://ionicons.com/v4/
 
-# Navigation
-navigation:
-  - text: Home
-    url: /
-  - text: About
-    url: /about.html
-  - text: Contact
-    url: /contact.html
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: Hey, I’m Kris! Researcher & Teacher.
+  hero__description: I teach artificial intelligence techniques to programmers and write about security, computer science and the future. You'll find discussion and resources here.
+  hero__image: '/images/kris-bolton.jpg'
 
-# Required Plugins
-plugins_dir:
-  - jekyll-paginate
-  - jekyll-tagsgenerator
-  - jekyll-seo-tag
-  - jekyll-sitemap
 
-# Pagination
-paginate: 5
-paginate_path: /page:num/
+#-------------------------------
+# Newsletter (_includes/footer-widgets/widget-subscribe.html)
+mailchimp: true # To enable the mailchimp form, use the value 'true'. To disable the form, use the value 'false' or leave the field blank.
+mailchimp__title: Get email updates # Add your Title
+mailchimp__text: Subscribe to get emails of recent posts. No more than one email per month. # Add your description.
+mailchimp__identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+mailchimp__button__text: Join # Add your button text
 
-# Permalinks
-permalink: /:title
 
-# Other
+#-------------------------------
+# Contact Settings
+contact:
+  email: your@email.com # Add your email for contact form
+  description: # Add a description of your form
+
+# NOTE
+# Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
+
+
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: # add your shortname for Disqus Comment. For example anvodstudio-demo
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1.
+
+
+#-------------------------------
+# Build Settings
 markdown: kramdown
+permalink: /:title
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll/tagging
 
-# Sass
+paginate: 5
+paginate_path: "/page/:num"
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+
+include:
+  - _pages/
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  /:title
+
 sass:
   sass_dir: _sass
   style: compressed

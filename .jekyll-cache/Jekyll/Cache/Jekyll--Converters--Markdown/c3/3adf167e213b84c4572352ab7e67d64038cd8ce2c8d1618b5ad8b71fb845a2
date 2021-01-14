@@ -1,0 +1,25 @@
+I"�<style>p { text-align: justify; }</style>
+
+<p><em>Update</em>: Since 2018 I have created better resources for those interested in machine learning. Head over to <a href="https://security.kiwi">this course on mahcine learning</a> which covers neural networks.</p>
+
+<h3 id="artificial-neural-networks">Artificial Neural Networks</h3>
+<p>Artificial neurons mimic the basic function of biological neurons, and much like their biological counterparts they only become useful when connected in a larger network, called Artificial Neural Networks.</p>
+
+<p>Neural networks are extremely adept at recognising patterns, this is pattern recognition is the reason they have become so widely used and talked about in recent years. The ability of neural networks to discover and recognise patterns allows them to far surpass traditional methods in computer science, making them viable for use in research and business.</p>
+
+<h3 id="an-artificial-neuron">An Artificial Neuron</h3>
+<p>The image below show an illustration of a single biological neuron annotated to describe a single artificial neurons function.</p>
+
+<p><img src="/images/posts/2018/neuron-annotated.jpg" alt="" /></p>
+
+<p>A biological neuron receives input signals from its dendrites from other neurons and sends output signals along its axon, which branches out and connects to other neurons. In the illustration above, the input signal is represented by <code class="language-plaintext highlighter-rouge">x0</code>, as this signal ‘travels’ it is multiplied (<code class="language-plaintext highlighter-rouge">w0 x0</code>) based on the a weight variable (<code class="language-plaintext highlighter-rouge">w0</code>). The weight variables are learnable and the weights strength and polarity (positive or negative) control the influence of the signal. The influence is determined by summing the signal input and weight (<code class="language-plaintext highlighter-rouge">∑i wi xi + b</code>) which is then calculated by the activation function f, if it is above a certain threshold the neuron fires.</p>
+
+<h3 id="activation-functions-in-brief">Activation Functions in Brief</h3>
+<p>The frequency of the firing of an artificial neuron is determined by an activation function. It determines at what threshold the neuron will fire. This section describes the Sigmoid activation function to bring clarity to the operation of an artificial neuron. Activation functions will be discussed in detail further on in this guide.</p>
+
+<p><img src="/images/posts/2018/sigmoidexample.jpg" alt="" /></p>
+
+<p>The graph above shows the Sigmoid activation function, which will convert all input signals into positive values between 0 and 1. The use of other activation functions with wider values, or negative values change the frequency of the firing of a neuron and will suit different types of data and purposes.</p>
+
+<p>Activation functions are dicussed in further detail in the final quick introduction post, <a href="/a-quick-introduction-to-artificial-neural-networks-part-2">part two</a>.</p>
+:ET

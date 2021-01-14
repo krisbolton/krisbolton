@@ -80,6 +80,7 @@ defaults:
 
 include:
   - _pages
+  
 
 # Tags
 tag_page_dir:         tag

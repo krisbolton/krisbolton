@@ -1,1 +1,1 @@
-Sitemap: https://joseph-jekyll.netlify.app//sitemap.xml
+Sitemap: https://krisbolton.com/sitemap.xml

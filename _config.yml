@@ -10,7 +10,7 @@ url: "https://krisbolton.com" # the base hostname & protocol for your site, e.g.
 # Author Settings
 author:
   name: Kris Bolton
-  bio: A researcher and teacher. I teach artificial intelligence and write about cyber security, computer science and the future.
+  bio: A developer and researcher. I write about security, AI, computer science and the future.
   avatar: '/images/kris-bolton-profile.jpg'
 
 social:
@@ -25,8 +25,8 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Hey, I’m Kris! Researcher & Teacher.
-  hero__description: I teach artificial intelligence techniques to programmers and write about security, computer science and the future. You will find discussion and resources here.
+  hero__title: Hey, I’m Kris! Developer & Researcher.
+  hero__description: I write about security, AI, computer science and the future. You will find discussion and resources here.
   hero__image: '/images/kris-bolton.jpg'
 
 

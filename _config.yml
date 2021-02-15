@@ -16,8 +16,6 @@ author:
 social:
 - {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com/krisbolton"}
 - {icon: "ion-logo-github", label: GitHub, link: "https://github.com/krisbolton"}
-- {icon: "ion-icon-person", label: 0x00 Sec, link: "https://0x00sec.org/u/kris/summary"}
-- {icon: "ion-icon-mail", label: Mail, link: "/contact/"}
 
 # Example of adding a new link to the author section and footer - {icon: "ion-logo-github", label: Github, link: "https://github.com"}
 # Other icons can be found at https://ionicons.com/v4/

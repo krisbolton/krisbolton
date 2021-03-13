@@ -23,5 +23,5 @@ In an industry where much of the talent is composed of freelancers, where few ar
 
 * [Advances in Natural Langauge Processing]() (coming soon)
 
-This scenario explores how advances in Natural Language Processing (NLP) may effect the tools, techniques and behaviour of threat actors focused on the period 2021-2026. Attention is paid to the effect of landmark advanced machine learning models such as GTP-3.
+This scenario explores how advances in Natural Language Processing (NLP) may effect the tools, techniques and behaviour of threat actors focused on the period 2021-2026. Attention is paid to the effect of landmark advanced machine learning models such as OpenAI's GTP-3 and EleutherAI's GTP-Neo.
 

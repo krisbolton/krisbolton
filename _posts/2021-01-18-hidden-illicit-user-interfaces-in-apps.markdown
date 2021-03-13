@@ -4,7 +4,7 @@ title: Hidden Illicit User Interfaces in Apps
 description: Apps with hidden user interfaces obscure their behaviour from the vetting teams of the app stores they target and from users unaware of the secret functionality. Those who are aware...
 date:   2021-01-18 13:00:00 +0000
 image:  '/images/posts/2021/hidden-illicit-ui-music-player-app.png'
-tags:   [malware, iOS, android]
+tags:   [malware, iOS, android, research]
 ---
 
 <style>p { text-align: justify; }</style>

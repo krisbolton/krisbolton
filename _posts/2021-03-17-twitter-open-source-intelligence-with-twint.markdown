@@ -16,7 +16,7 @@ In this post we'll work through a basic workflow in a <a href="https://jupyter.o
 
 If you have never used any of the technologies I mentioned, start here. If you already have Jupyter Notebooks skip to  step.
 
-**Step 0**: Download and install <a href="https://www.anaconda.com/products/individual#Downloads/" target="_blank">Anaconda. Anaconda is a data science platform which includes Jupyter Notebooks. Installers are availalbe for Windows, MacOS and Linux. `pip3 install jupyter` is a fast terminal-based method for Mac and Linux.  
+**Step 0**: Download and install <a href="https://www.anaconda.com/products/individual#Downloads/" target="_blank">Anaconda</a>. Anaconda is a data science platform which includes Jupyter Notebooks. Installers are availalbe for Windows, MacOS and Linux. `pip3 install jupyter` is a fast terminal-based method for Mac and Linux.  
 **Step 1**: Install TWINT.`pip3 install twint` for Mac and Linux is possible, however, installing in-notebook provides a more consistent approach for using TWINT with Jupyter across Windows, Mac and Linux. 
     
 However, feel free to `pip3 install twint` install via terminal on Mac or Linux so you can use the `twint` command in-terminal, as well as in-notebook. If you do this, it isn't necessary to type the following part of this step.

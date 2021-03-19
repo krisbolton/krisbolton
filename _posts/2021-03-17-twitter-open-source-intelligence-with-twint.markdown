@@ -3,7 +3,6 @@ layout: post
 title: Twitter Open Source Intelligence with TWINT
 description: TWINT provides a termainal or code interface to Twitter in which you can search tweets, replies and more over specific time periods and easily export the intelligence...
 date:   2021-03-19 19:41:00 +0000
-image:  ''
 tags:   [OSINT, TWINT]
 ---
 

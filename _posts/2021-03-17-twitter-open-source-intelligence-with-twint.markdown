@@ -215,7 +215,7 @@ plt.show()
 
 Above we create a histogram of tweets over the period, the tweet frequency. For the data we gathered on jack this produces the following:
 
-<div style="text-align:center;"><img src="/images/posts/2021/jack-tweet-frequency.jpg" alt="A histogram showing the freqnecy of tweets by jack over a 2 and a half month period." style="width:250px; padding-bottom: 10px;"/></div>
+<div style="text-align:center;"><img src="/images/posts/2021/jack-tweet-frequency.jpg" alt="A histogram showing the freqnecy of tweets by jack over a 2 and a half month period." style="width:350px; padding-bottom: 10px;"/></div>
 
 <p style="text-align: center; font-style: italic;">A histogram showing the freqnecy of tweets by jack.</p>
 
@@ -283,7 +283,7 @@ plt.show()
 
 Above, we create a list of the tweets from the associated column. We iterate through each tweet, turning the values to strings, tokenizing these strings and converting them to lowercase. Once each word has been cleansed in this way, they are added to the words variable which will be used to generate a word cloud using the `WordCloud()` function. Finally, we plot the word cloud using matplotlib.
 
-<div style="text-align:center;"><img src="/images/posts/2021/jack-tweets-word-cloud.jpg" alt="A word cloud composed of tweets from jack during Feb - Mar 2021.." style="width:250px; padding-bottom: 10px;"/></div>
+<div style="text-align:center;"><img src="/images/posts/2021/jack-tweets-word-cloud.jpg" alt="A word cloud composed of tweets from jack during Feb - Mar 2021.." style="width:350px; padding-bottom: 10px;"/></div>
 
 <p style="text-align: center; font-style: italic;">A word cloud composed of tweets from jack during Feb - Mar 2021.</p>
 

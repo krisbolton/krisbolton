@@ -292,6 +292,18 @@ This is only a small set of what is possible with Python, pandas, matplotlib and
 
 ## References
 
-<ol>
-<li id="1"> <i></i><a href="" target="_blank"></a>.</li>
+<ol>    
+
+<li>Matplotlib (2021) <i>Matplotlib</i><a href="https://matplotlib.org/" target="_blank">https://matplotlib.org</a>.</li>
+
+<li>Pandas (2021) <i>Pandas</i><a href="https://pandas.pydata.org/" target="_blank">https://pandas.pydata.org</a>.</li>
+
+<li>Pandas (2021) <i>Pandas.DataFrame</i><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html</a>.</li>
+
+<li>Twitter (2021) <i>Profile: Jack</i><a href="https://twitter.com/jack" target="_blank">https://twitter.com/jack</a>.</li>
+
+<li>Wikipedia (2021) <i>Jack Dorsey</i><a href="https://en.wikipedia.org/wiki/Jack_Dorsey" target="_blank">https://en.wikipedia.org/wiki/Jack_Dorsey</a>.</li>
+
+<li>Wordcloud (2021) <i>WordCloud for Python documentation</i><a href="https://amueller.github.io/word_cloud/" target="_blank">https://amueller.github.io/word_cloud/</a>.</li>
+
 </ol>

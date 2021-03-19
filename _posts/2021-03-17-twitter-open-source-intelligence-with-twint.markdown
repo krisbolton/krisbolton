@@ -23,7 +23,7 @@ However, feel free to `pip3 install twint` install via terminal on Mac or Linux 
     
 In the first cell of a notebook, type:
     
-```python
+```
 import sys
 !{sys.executable} -m pip install twint
 ```
@@ -31,7 +31,7 @@ import sys
 **Step 2**: We need to import twint and pandas for use in the notebook. The code below this allows us to use multiple cells, rather than wait for cells to finish. You will still need to wait for cells which depend on previous cells of course.
 
 
-```python
+```
 import twint
 import pandas as pd
 
@@ -50,7 +50,7 @@ There are two ways to use TWINT, in the terminal and within python code. We will
 
 The simplest usable TWINT script used to scrape tweets from a users timeline is as follows:
 
-```python
+```
 c = twint.Config()
 
 c.Username = 'jack'
@@ -67,7 +67,7 @@ If you have issues at this stage, for example the error `CRITICAL:root:twint.run
 
 The above is the essance of TWINT, returning Twitter information directly (either in-terminal or in-notebook). This isn't particulalry useful or readable at the moment. Pandas can change that!
 
-```python
+```
 c = twint.Config()
 
 c.Username = 'jack'
@@ -82,7 +82,7 @@ Above, we target tweets by user `jack` (the founder of Twitter) from Febuary 17s
 
 You can also use pandas on any CSV files we have created using TWINT by importing the data into a <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html" target="_blank">dataframe</a>.
 
-```python
+```
 df = twint.storage.panda.Tweeds_df
 df
 ```
@@ -91,18 +91,17 @@ Here, we assign the data we collected and stored previously to a dataframe and p
 
 This allows us to manipulate the data by focusing on indivudal columns and allows grouping etc. For example, we are dealing with one user so there's no need to see that information, and much of the other information is verbose. We may only care about the tweet content, and the datetime.
 
-```python
+```
 df[['date', 'tweet']]
 ```
 
 We have access to a great deal of tweet information. We can view information on what the dataframe contains with the `info()` function.
 
-```python
+```
 df.info()
 ```
 
-```text
-
+```
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 12 entries, 0 to 11
 Data columns (total 33 columns):
@@ -152,7 +151,7 @@ We can manipulate any of these columns as we did above.
 We can visualise the data we have gathered to gain a better understanding. We'll re-gather a larger dataset from jacks timeline so we have more data to deal wrangle insights from. 
 
 
-```python
+```
 c = twint.Config()
 
 c.Username = 'jack'
@@ -165,7 +164,7 @@ twint.run.Search(c)
 
 We have increased our search space by 1 month.
 
-```python
+```
 df = twint.storage.panda.Tweeds_df
 df
 ```
@@ -174,14 +173,14 @@ We reassign the collected tweets to the dataframe, as we have new data (we incre
 
 We want to graph the number of tweets over the period using matplotlib.
 
-```python
+```
 # Convert date colum into a list for the next step
 dates_list = df['date'].to_list()
 ```
 
 We convert the dataframes data column to a python list and assign it to the variable `data_list`.
 
-```python
+```
 # Create a histogram of tweet frequency
 # from https://stackoverflow.com/questions/44929555/how-to-properly-create-a-histogram-displaying-the-frequency-of-the-tweets-for-e
 
@@ -222,7 +221,7 @@ Above we create a histogram of tweets over the period, the tweet frequency. For 
 
 We want to find the individual hashtags a user has used during the collection period.
 
-```python
+```
 # Extract unique hashtags
 # Get hashtag list
 hashtag_list = df['hashtags'].to_list()
@@ -248,7 +247,7 @@ In this case there is only one output, "#bitcoin".
 
 We want to create a word cloud to visualise the possible topics a user is discussing during the captured period. The word cloud package serves this purpose.
 
-```python
+```
 tweets = df['tweet'].to_list()
 
 words = ''

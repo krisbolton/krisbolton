@@ -214,7 +214,7 @@ plt.show()
 
 Above we create a histogram of tweets over the period, the tweet frequency. For the data we gathered on jack this produces the following:
 
-<div style="text-align:center;"><img src="/images/posts/2021/jack-tweet-frequency.jpg" alt="A histogram showing the freqnecy of tweets by jack over a 2 and a half month period." style="width:350px; padding-bottom: 10px;"/></div>
+<div style="text-align:center;"><img src="/images/posts/2021/jack-tweet-frequency.jpg" alt="A histogram showing the freqnecy of tweets by jack over a 2 and a half month period." style="width:450px; padding-bottom: 10px;"/></div>
 
 <p style="text-align: center; font-style: italic;">A histogram showing the freqnecy of tweets by jack.</p>
 

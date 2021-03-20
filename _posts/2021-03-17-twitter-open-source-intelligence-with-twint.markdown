@@ -23,15 +23,15 @@ However, feel free to `pip3 install twint` install via terminal on Mac or Linux 
     
 In the first cell of a notebook, type:
     
-```python
+<code>
 import sys
 !{sys.executable} -m pip install twint
-```
+</code>
 
 **Step 2**: We need to import twint and pandas for use in the notebook. The code below this allows us to use multiple cells, rather than wait for cells to finish. You will still need to wait for cells which depend on previous cells of course.
 
 
-```python
+<code>
 import twint
 import pandas as pd
 
@@ -40,7 +40,7 @@ import pandas as pd
 import nest_asyncio
 
 nest_asyncio.apply()
-```
+</code>
 
 ## Basic TWINT Usage
 

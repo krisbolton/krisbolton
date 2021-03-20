@@ -11,7 +11,7 @@
       </div>
       {% endif %}
       <form class="subscribe-form validate"
-        action="{% if site.mailchimp-identifier %}//{{site.mailchimp-identifier}}{% else %}#{% endif %}" method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
+        action="{% if site.mailchimp__identifier %}//{{site.mailchimp__identifier}}{% else %}#{% endif %}" method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
         <label class="screen-reader-text" for="mce-EMAIL">Email address</label>
         <input class="subscribe-email required email" id="mce-EMAIL" type="text" name="EMAIL"
           placeholder="Email address">

@@ -17,7 +17,7 @@ I design and run futures methodologies to collate and derive insight from multip
 
 * [Protocols for Open Futures]() (coming soon)
 
-In an industry where much of the talent is composed of freelancers, where few are retained or start within academia, and considering the necessity of remote-only practice, a new approach is required to access knowledge. I use the phrase *open futures* to refer to futures research which implements an altered approach to deal with these challenges. The results of research are made available to the security community.
+In the information security industry few individuals have contact with, or stay within academia,  talent is transient as individuals move, and considering remote-only practice, a new approach is required to access the knowledge within industry. I use the phrase *open futures* to refer to futures research which alters the traditional approach of academic-only experts to rebuff these challenges and improve access to knowledge. Open futures research is just that; participation has fewer barriers and the results of research are made available to the security community.
 
 ## Research
 

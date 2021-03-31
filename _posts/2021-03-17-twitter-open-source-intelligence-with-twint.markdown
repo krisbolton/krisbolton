@@ -168,7 +168,7 @@ We have increased our search space by 1 month.
 {% highlight python %}
 df = twint.storage.panda.Tweeds_df
 df
-```
+{% endhighlight %}
 
 We reassign the collected tweets to the dataframe, as we have new data (we increased teh search space above).
 

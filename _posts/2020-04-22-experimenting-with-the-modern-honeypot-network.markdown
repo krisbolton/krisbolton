@@ -29,41 +29,54 @@ Secure the mhn-server as your normally would, its intended for you to manage sen
 
 #### Create a non-root user.
 
-`adduser deploy`
+{% highlight text %}
+adduser deploy
+{% endhighlight %}
 
 Don't install MHN as root, it will not work as intended.
 
 #### Add deploy as sudo user under 'user privilege specification':
 
-`visudo`
-`deploy ALL=(ALL:ALL) ALL`
+{% highlight text %}
+visudo
+deploy ALL=(ALL:ALL) ALL
+{% endhighlight %}
 
 #### Switch to the deploy user:
 
-`su deploy`
+{% highlight text %}
+su deploy
+{% endhighlight %}
 
 #### Clone the MHN GitHub repo:
 
-`git clone https://github.com/pwnlandia/mhn.git`
+{% highlight text %}
+git clone https://github.com/pwnlandia/mhn.git
+{% endhighlight %}
 
 #### Change to the mhn directory:
 
-`cd mhn`
+{% highlight text %}
+cd mhn
+{% endhighlight %}
 
 #### Run the installation script:
 
-`sudo ./install.sh`
+{% highlight text %}
+sudo ./install.sh
+{% endhighlight %}
 
 Towards the end of the installation you'll be asked a series of questions. I chose no debug mode, I added a new gmail I created - **this will also be used to login to the web interface**. I didn't need splunk or ELK. I left the rest of the options as default.
 
 #### Login to the web interface.
 
-`ipconfig`
+{% highlight text %}
+ipconfig
+{% endhighlight %}
 
 Copy & paste the IP into a browser on your machine, and login with the email and password you provided earlier.
 
 _The server's done!_
-
 
 ### Sensor setup
 
@@ -86,7 +99,6 @@ Sensor setup is as easy as copy & pasting the `wget` command string into the sen
 #### Check the sensors tab
 
 Click the sensors tab in the web interface to view your new sensor.
-
 
 #### Dionaea
 

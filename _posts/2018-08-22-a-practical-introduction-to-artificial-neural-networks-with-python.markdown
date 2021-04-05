@@ -100,14 +100,14 @@ Now we can write python and run it live in the web interface.
 
 ### Importing Dependencies
 
-```python
+{% highlight python %}
 from sklearn import datasets
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Perceptron
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from matplotlib.pyplot as plt
-```
+{% endhighlight %}
 
 ### The Iris Data Set
 
@@ -117,44 +117,44 @@ The Iris dataset is small in comparison to the data sets which are needed for mo
 
 Itallics indicate comments or text output by the console.
 
-```python
+{% highlight python %}
 #Load the Iris dataset
 iris = datasets.load_iris()
 
 #Assign the data to vertices
 x = iris.data
 y = iris.target
-```
+{% endhighlight %}
 
 Let’s take a look at the data we’re going to manipulate.
 
 x indicies:
 
-```python
+{% highlight python %}
 #Print the first five features (the four measurements in a 2D array)
 x[:5]
-```
+{% endhighlight %}
 
 Output:
 
-```text
+{% highlight text %}
 array([[5.1, 3.5, 1.4, 0.2],
        [4.9, 3. , 1.4, 0.2],
        [4.7, 3.2, 1.3, 0.2],
        [4.6, 3.1, 1.5, 0.2],
        [5. , 3.6, 1.4, 0.2]])
-```
+{% endhighlight %}
 
 y indicies:
 
-```python
+{% highlight python %}
 #Print all 150 indices of x axis (the class of each sample)
 y[:150]
-```
+{% endhighlight %}
 
 Output:
 
-```text
+{% highlight text %}
 array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -162,7 +162,7 @@ array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
        2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
        2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
-```
+{% endhighlight %}
 
 Neural Networks require the data to be represented as floating point numbers. This allows the decimal points high accuracy to be used by the various calculations within the underlying implementation. Floating point numbers can simply represent data with finer granularity than the ten representations that integers allow. This can be appreciated by looking at the annotated neuron illustration at the start of this section.
 
@@ -172,8 +172,7 @@ The 2D array held in x represents four columns: Sepal Length, Sepal Width, Petal
 
 Now let’s visualise the data set to get a better idea of what the dataset actually describes.
 
-```python
-
+{% highlight python %}
 #Import dataset
 iris = datasets.load_iris()
 X = iris.data
@@ -191,7 +190,7 @@ plt.xticks(())
 plt.yticks(())
 
 plt.show()
-```
+{% endhighlight  %}
 
 ![](/images/posts/2018/irisgraph.jpg)
 
@@ -201,28 +200,28 @@ This graph shows the distribution of the three sample types, categorized by two 
 
 We need to set aside some of the data set to become the data the perceptron is trained on. This data isn’t used again once the training is complete – the algorithm has already seen and learned from this information, and would serve no purpose to be classified – as the answer is already known.
 
-```python
+{% highlight python %}
 #Set aside 30% of the data set for training
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
-```
+{% endhighlight %}
 
 The `StandardScaler()` function standardised all of the features in a dataset to have a mean of zero and unit variance, to ensure all of the features are distributed normally. Many predictive algorithms require the data set to be standardised otherwise their behavior will be unpredictable.
 
-```python
+{% highlight python %}
 #Train the scaler, which standarises all the features to have mean of zero and unit variance
 sc = StandardScaler()
 sc.fit(x_train)
-```
+{% endhighlight %}
 
 Now we apply the scaler to each section of the split data set.
 
-```python
+{% highlight python %}
 #Apply the scaler to the X training data
 x_train_std = sc.transform(x_train)
 
 #Apply the SAME scaler to the X test data
 x_test_std = sc.transform(x_test)
-```
+{% endhighlight %}
 
 ### Scikit-Learn Perceptron
 
@@ -234,7 +233,7 @@ Here we use the `Perceptron()` function to invoke a perceptron object with the f
 
 `verbose` is a boolean flag, when set to 1 it will print information for each epoch.
 
-```python
+{% highlight python %}
 #Create a perceptron object with 50 iterations over the data set, and a learning rate of 0.3
 ppn = Perceptron(max_iter=50, eta0=1, verbose=0)
 
@@ -247,13 +246,13 @@ Perceptron(alpha=0.0001, class_weight=None, eta0=1, fit_intercept=True,
 
 #Apply the trained perceptron on the X data to make predicts for the y test data
 y_pred = ppn.predict(x_test_std)
-```
+{% endhighlight %}
 
 
 ### The Results
 
 
-```python
+{% highlight python %}
 #Print the predicted y test data
 y_pred
 
@@ -272,7 +271,7 @@ array([1, 2, 2, 1, 1, 0, 2, 1, 1, 2, 2, 0, 2, 1, 1, 2, 1, 0, 0, 1, 2, 0,
 print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
 
 Accuracy: 0.89
-```
+{% endhighlight %}
 
 This implementation of the most simple neural network achieves high accuracy. Throughout multiple runs it achieved between 0.89 and 1.00 accuracy, or said another way it’s 89% to 100% accurate.
 

@@ -63,27 +63,29 @@ If you want to create imagery as visually appealing as his, you can copy & paste
 
 Open R Studio and create a new R script (`File > New File > R Script`). Add the following libraries which will be installed at runtime. 
 
-<pre><code class="language-javascript">library(rayshader)
+{% highlight python %}
+library(rayshader)
 library(sp)
 library(raster)
 library(scales)
 library(magrittr)
 library(rgdal)
 library(magick)
-</code></pre>
+{% endhighlight %}
 
 ### Add the datasets, and merge
 
 Let's load the elevation data, merge the two datasets into `skye_elevation`, plot height using the data and render the map. Move the downloaded hgt files into a folder somewhere and replace the file paths below with your own. If you don't need to merge datasets simply remove the second line and replace assignment of `skye_elevation` to `elevation1` (`skye_elevation = elevation1`), this just means you don't need to replace that variable multiple places in the code, its not good code. 
 
-<pre><code class="language-javascript">elevation1 = raster::raster("C:/Users/USER/Documents/Dev/N57W006.hgt")
+{% highlight python %}
+elevation1 = raster::raster("C:/Users/USER/Documents/Dev/N57W006.hgt")
 elevation2 = raster::raster("C:/Users/USER/Documents/Dev/N57W007.hgt")
 
 skye_elevation = raster::merge(elevation1,elevation2)
 
 height_shade(raster_to_matrix(skye_elevation)) %>%
   plot_map()
-</code></pre>
+{% endhighlight %}
 
 Open the plots tab in R Studio (bottom right). Our first output. Nice! It shows a heat-map of the elevation of the area.
 
@@ -91,42 +93,47 @@ Open the plots tab in R Studio (bottom right). Our first output. Nice! It shows 
 
 Now we'll load the RGB (Red, Green, Blue) channels from the TIF zipped folder we downloaded earlier, these will be combined to make our satellite image. The folder will need unzipping and a folder created from that will need unzipping on Windows, Mac is one upzip. The TIF files ending B4, B3, B2 are the reg, green and blue channels respectively. You can delete the other files to save some space.
 
-<pre><code class="language-javascript">skye_r = raster::raster("C:/Users/USER/Documents/Dev/B4.TIF")
+{% highlight python %}
+skye_r = raster::raster("C:/Users/USER/Documents/Dev/B4.TIF")
 skye_g = raster::raster("C:/Users/USER/Documents/Dev/B3.TIF")
 skye_b = raster::raster("C:/Users/USER/Documents/Dev/B2.TIF")
 
 skye_rbg = raster::stack(skye_r, skye_g, skye_b)
 raster::plotRGB(skye_rbg, scale=255^2)
-</code></pre>
+{% endhighlight %}
 
 ![](/images/posts/2020/skye-raster.png)
 
 As Tyler points out, this is a little dark. We need to apply gamma:
 
-<pre><code class="language-javascript">skye_rbg_corrected = sqrt(raster::stack(skye_r, skye_g, skye_b))
+{% highlight python %}
+skye_rbg_corrected = sqrt(raster::stack(skye_r, skye_g, skye_b))
 raster::plotRGB(skye_rbg_corrected)
-</code></pre>
+{% endhighlight %}
 
 ![](/images/posts/2020/skye-raster-gamma.png)
 
 That's better, if a little washed-out. We'll add contrast later to fix that.
 
-<pre><code class="language-javascript">raster::crs(skye_r)
+{% highlight python %}
+raster::crs(skye_r)
 
 raster::crs(skye_elevation)
 
 crs(skye_r)
-</code></pre>
+{% endhighlight %}
 
 The above reveals a problem, the coordinate systems for elevation and the image data aren't of the same type. We fix this by transforming the elevation data to UTM coordinates using `raster::projectRaster()` and store it in `skye_elevation_utm`.
 
-<pre><code class="language-javascript">skye_elevation_utm = raster::projectRaster(skye_elevation, crs = crs(skye_r), method = "bilinear")
+{% highlight python %}
+skye_elevation_utm = raster::projectRaster(skye_elevation, crs = crs(skye_r), method = "bilinear")
 crs(skye_elevation_utm)
-</code></pre>
+{% endhighlight %}
 
 Now we'll crop the data to a desired area, we're going to focus on the Cuillin mountain range in the south of Skye. Head back to the USGS Earth Explorer, where you obtained the satellite imagary and find the appropraite bottom left and top right longditude and latitude coordinates to crop to. You may encounter errors which indicate you're cropping an area not within the bounds of the data, or which indicate you've entered the long/lat incorrectly - somehow when typing I managed to reverse x/y.
 
-<pre><code class="language-javascript">bottom_left = c(y=-6.3460, x=57.1407)
+{% highlight python %}
+bottom_left = c(y=-6.3460, x=57.1407)
 top_right   = c(y=-6.0081, x=57.3299)
 
 extent_latlong = sp::SpatialPoints(rbind(bottom_left, top_right), proj4string=sp::CRS("+proj=longlat +ellps=WGS84 +datum=WGS84"))
@@ -134,11 +141,12 @@ extent_utm = sp::spTransform(extent_latlong, raster::crs(skye_elevation_utm))
 
 e = raster::extent(extent_utm)
 e
-</code></pre>
+{% endhighlight %}
 
 Below we crop the datasets, create an array containing the RGB values and convert the elevation data to an R matrix, which is what the rayshader function expects.
 
-<pre><code class="language-javascript">skye_rgb_cropped = raster::crop(skye_rbg_corrected, e)
+{% highlight python %}
+skye_rgb_cropped = raster::crop(skye_rbg_corrected, e)
 elevation_cropped = raster::crop(skye_elevation_utm, e)
 
 names(skye_rgb_cropped) = c("r","g","b")
@@ -158,16 +166,17 @@ skye_rgb_array[,,3] = skye_b_cropped/255 #Green layer
 skye_rgb_array = aperm(skye_rgb_array, c(2,1,3))
 
 plot_map(skye_rgb_array)
-</code></pre>
+{% endhighlight %}
 
 ![](/images/posts/2020/skye-cuillin-crop.png)
 
 We increase the contrast using the `scales::rescale()` function and generate our image.
 
-<pre><code class="language-javascript">skye_rgb_contrast = scales::rescale(skye_rgb_array,to=c(0,1))
+{% highlight python %}
+skye_rgb_contrast = scales::rescale(skye_rgb_array,to=c(0,1))
 
 plot_map(skye_rgb_contrast)
-</code></pre>
+{% endhighlight %}
 
 ![](/images/posts/2020/skye-cuillin-crop.png)
 
@@ -175,11 +184,12 @@ Looking pretty good. Not as vibrant and appealing as Tyle's, but it's a first tr
 
 Now for the bit you're doing this for, the 3D render of the location:
 
-<pre><code class="language-javascript">plot_3d(skye_rgb_contrast, zionel_matrix, windowsize = c(1100,900), zscale = 15, shadowdepth = -50,
+{% highlight python %}
+plot_3d(skye_rgb_contrast, zionel_matrix, windowsize = c(1100,900), zscale = 15, shadowdepth = -50,
         zoom=0.5, phi=45,theta=-45,fov=70, background = "#F2E1D0", shadowcolor = "#523E2B")
 render_snapshot(title_text = "The Cuillin, Isle of Skye, Scotland | Imagery: Landsat 8 | DEM: 30m SRTM",
                 title_bar_color = "#1f5214", title_color = "white", title_bar_alpha = 1)
-</code></pre>
+{% endhighlight %}
 
 This can be finiky on Windows, you might not be albe to access the x icon to close the window which is created, but resizing the window by draging pops the window top down into view. I'm likely missing a function or parameter I'm unaware of, or its a bug.
 

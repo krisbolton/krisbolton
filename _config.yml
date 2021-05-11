@@ -25,7 +25,7 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Hey, I’m Kris! Information Assurance & Hacking.
+  hero__title: Hey, I’m Kris! I work in Information Assurance.
   hero__description: I write about security, AI, computer science and the future. You will find discussion and resources here.
   hero__image: '/images/kris-bolton.jpg'
 

@@ -2,7 +2,7 @@
 # General Site Settings
 title: Kris Bolton
 logo: # You can add own logo. For example '/images/logo.png'.
-description: Kris Bolton teaches artificial intelligence and writes about security, computer science and the future.
+description: Kris Bolton works in Information Assurance and writes about security, computer science and the future.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://krisbolton.com" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -10,7 +10,7 @@ url: "https://krisbolton.com" # the base hostname & protocol for your site, e.g.
 # Author Settings
 author:
   name: Kris Bolton
-  bio: A developer and researcher. I write about security, AI, computer science and the future.
+  bio: Information Assurance and Data Protection. I write about security, AI, computer science and the future.
   avatar: '/images/kris-bolton-profile.jpg'
 
 social:
@@ -25,7 +25,7 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Hey, I’m Kris! Developer & Researcher.
+  hero__title: Hey, I’m Kris! Information Assurance.
   hero__description: I write about security, AI, computer science and the future. You will find discussion and resources here.
   hero__image: '/images/kris-bolton.jpg'
 
